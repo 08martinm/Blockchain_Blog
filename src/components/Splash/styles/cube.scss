@@ -1,0 +1,121 @@
+/* Sass-variables */
+$cube: 10vw;
+
+@mixin cube-side($name, $pct-1, $pct-2) {
+  .#{$name} {
+    animation: $name 20s infinite;
+    transform-origin: $pct-1 $pct-2;
+  }  
+}
+
+@mixin cube-side-2($name, $negative) {
+  .#{$name} {
+    transform: rotateY(180deg) translateZ(($negative * $cube / 2));
+  }  
+}
+
+@mixin regeneration($animation, $rotate, $negative, $bool) {
+  @keyframes #{$animation} {
+    $expr: if($bool, 
+    rotateY($rotate) translateX(($negative * $cube / 2)), 
+    rotateX($rotate) translateY(($negative * $cube / 2)));
+
+    0% { transform: 0 0; }
+    5% { transform: $expr; }
+    100% { transform: $expr; }
+  }
+}
+
+/* keyframes for rotation, slides, regeneration */
+@include regeneration(right, -270deg, 1, true);
+@include regeneration(left, 270deg, -1, true);
+@include regeneration(top, -90deg, -1, false);
+@include regeneration(bottom, 90deg, 1, false);
+
+@keyframes spin {
+  0% { transform: rotateY(-60deg); }
+  65% { transform: rotateY(0); }
+  100% { transform: rotateY(0); }
+}
+
+@keyframes cubeSlide {
+  0% { top: 0; }
+  70% { top: 0; }
+  100% { top: -50vw; }
+}
+
+@keyframes cylinderSlide {
+  0% { top: -64vw; }
+  40% { top: -64vw; }
+  70% { top: -14vw; }
+  100% { top: -64vw; }
+}
+
+/* CSS styles */
+.wrapper {
+  bottom: 0;
+  left: 70%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.cube {
+  animation: spin 20s infinite linear, cubeSlide 20s linear infinite;
+  display: block;
+  height: 70%;
+  justify-content: left;
+  padding: 1.5vw 0 0 6vw;
+  position: relative;
+  transform-style: preserve-3d;
+  width: 20%;
+
+  .side {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 1.5em rgba(0, 0, 0, 0.5);
+    display: flex;
+    height: $cube;
+    position: absolute;
+    transition: all 1s linear;
+    width: $cube;
+  }
+
+  @include cube-side(right, 100%, 0%);
+  @include cube-side(left, 0%, 50%);
+  @include cube-side(top, 50%, 0%);
+  @include cube-side(bottom, 50%, 100%);
+  @include cube-side-2(back, 1);
+  @include cube-side-2(front, -1);
+}
+
+.cylinder {
+  animation: cylinderSlide 20s linear infinite;
+  background-color: rgba(160, 160, 160, 0.5);
+  border-radius: 2vw/1vw;
+  height: 26vw;
+  margin: -10vw 9.5vw 0;
+  overflow: hidden;
+  position: absolute;
+  top: -25vw;
+  width: 3vw;
+
+}
+
+.cylinder::before,
+.cylinder::after {
+  background-color: rgba(160, 160, 160, 0.4);
+  border-radius: 2vw/1vw;
+  content: '';
+  height: 5vw;
+  margin: 0 auto;
+  position: relative;
+  width: 3vw;
+}
+
+.cylinder::before {
+  top: 0;
+}
+
+.cylinder::after {
+  bottom: 0;
+}

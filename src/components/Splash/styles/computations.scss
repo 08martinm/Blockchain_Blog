@@ -1,0 +1,45 @@
+@import 'splash';
+@mixin location($name, $left, $top) {
+  .#{$name} {
+    flex: 0 1 auto;
+    left: $left;
+    top: $top;
+  }
+}
+
+.wrapper {
+  display: inline-block;
+  float: left;
+  height: 80%;
+  position: absolute;
+  width: 33%;
+}
+
+.computer {
+  color: #fffffa;
+  display: inline-block;
+  font-size: 5vw;
+  margin: 0.1vw;
+  position: absolute;
+}
+
+@include location(c1, 20%, 10%);
+@include location(c2, 40%, 20%);
+@include location(c3, 60%, 30%);
+
+.bolt-wrapper {
+  display: block;
+  margin: 8% 0 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.bolt {
+  animation: blink 20s infinite 0.3s;
+  color: #2e2f30;
+  display: block;
+  font-size: 2.3vw;
+  margin: auto;
+  width: 20%;
+}

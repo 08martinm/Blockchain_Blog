@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Volkhov');
+
+.div {
+  background-color: #fffffa;
+  color: #2e2f30;
+  font-family: 'Volkhov', serif;
+  height: 200px;
+  margin: 10% 0 0;
+  position: relative;
+  top: 35vw;
+  width: 100%;
+}
+
+.text {
+  margin: 0 auto;
+  position: relative;
+  text-align: left;
+  width: 25%;
+}

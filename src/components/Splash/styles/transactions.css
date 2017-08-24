@@ -1,0 +1,32 @@
+.wrapper {
+  bottom: 0;
+  left: 33%;
+  position: absolute;
+  right: 33%;
+  top: 1vw;
+}
+
+.ledger-wrapper {
+  display: block;
+  height: 14vw;
+  margin: 0 auto;
+  position: relative;
+  width: 25vw;
+}
+
+.ledger {
+  background-color: #444;
+  border-radius: 2.5%;
+  color: #fffffa;
+  display: block;
+  height: 14vw;
+  position: relative;
+  width: 25vw;
+}
+
+.transaction-container {
+  height: 12vw;
+  margin-top: -6vw;
+  position: absolute;
+  top: 50%;
+}

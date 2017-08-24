@@ -1,0 +1,109 @@
+@mixin wrapper($name, $float, $width) {
+  .#{$name} {
+    width: $width;
+  }
+
+  .#{$name}::before {
+    content: '';
+    float: $float;
+    padding-bottom: $width / 8;
+  }
+
+  .#{$name} {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@keyframes blink {
+  @for $i from 0 through 100 {
+    $expr: if($i < 40 and $i % 5 == 0, #fffffa, #2e2f30);
+
+    #{$i*1%} {
+      color: $expr;
+    }
+  } 
+}
+
+@keyframes blink-2 {
+  0% { color: #2e2f30; }
+  45% { color: #2e2f30; }
+  50% { color: #d7dfde; }
+  55% { color: #d7dfde; }
+  65% { color: #2e2f30; }
+  100% { color: #2e2f30; }
+}
+
+@keyframes bounce {
+  0%,
+  30%,
+  100% { transform: translateY(0); }
+  65% { transform: translateY(-10px); }
+}
+
+@include wrapper(container, left, 100%);
+
+.splash-container {
+  background-color: #2e2f30;
+  height: 50%;
+  margin: auto 0;
+  padding: 10% 0 0;
+  position: fixed;
+  width: 100%;
+}
+
+.landing-wrapper {
+  height: 100%;
+}
+
+.container {
+  background-color: #2e2f30;
+  border-radius: 2%;
+  padding: 1vw 0;
+  position: relative;
+}
+
+.arrow-container-1 {
+  bottom: 0;
+  display: block;
+  font-size: 2vw;
+  left: 30%;
+  position: absolute;
+  right: 67%;
+  top: 0;
+}
+
+.arrow-container-2 {
+  bottom: 0;
+  display: block;
+  font-size: 2vw;
+  left: 67%;
+  position: absolute;
+  right: 30%;
+  top: 0;
+}
+
+.arrow-right {
+  animation: blink 20s infinite 0.75s;
+  display: block;
+  height: 10%;
+  margin: 4vw auto;
+  width: 70%;
+}
+
+.arrow-2 {
+  animation: blink-2 20s infinite;
+}
+
+.down-arrow {
+  animation: bounce 4s infinite;
+  color: #d7dfde;
+  font-size: 2em;
+}
+
+.arrow-wrapper {
+  display: block;
+  margin: 10% auto 0;
+  width: 4%;
+}
