@@ -1,8 +1,9 @@
 import React from 'react';
-import Nav from './components/Nav/index';
-import Splash from './components/Splash/index';
-import Background from './components/Background/index';
-import Explanation from './components/Explanation/index';
+import Nav from './components/Nav';
+import Splash from './components/Splash';
+import Background from './components/Background';
+import Explanation from './components/Explanation';
+import Blog from './components/Blog';
 import styles from './App.css';
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <Splash />
       <Background />
       <Explanation />
+      <Blog />
     </div>
   );
 };
