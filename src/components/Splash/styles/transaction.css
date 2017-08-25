@@ -1,21 +1,18 @@
 .outer {
   border-radius: 0.625vw;
-  display: block;
   height: 1.3vw;
   margin: 0.05vw 0;
   position: relative;
   text-align: center;
-  top: 0;
   width: 25vw;
 }
 
 .ledger {
   background-color: #333;
-  border: 0.06vw solid #444;
   border-radius: 0.625vw;
-  display: inline-block;
   font-size: 0.7vw;
   height: 1vw;
+  margin: 0 0.5vw 0 2vw;
   text-align: center;
   width: 25vw;
 }
@@ -25,5 +22,9 @@
 }
 
 .value {
+  left: 20vw;
+  margin: 0 1vw 0 0.5vw;
+  position: absolute;
+  top: 0;
   width: 2vw;
 }

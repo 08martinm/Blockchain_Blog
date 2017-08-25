@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Volkhov');
+
+.container {
+  background-color: #fffffa;
+  color: #2e2f30;
+  font-family: 'Volkhov', serif;
+  padding: 5% 0;
+  position: relative;
+  text-align: center;
+  top: 800px;
+  width: 100%;
+}
+
+.text {
+  border-radius: 3px 5px;
+  border-right: 3px solid #2e2f30;
+  border-top: 3px solid #2e2f30;
+  margin: 2% auto;
+  padding: 2em;
+  position: relative;
+  text-align: left;
+  width: 25%;
+}
+
+input,
+button {
+  background-color: #fffffa;
+  border: 2px #2e2f30 solid;
+  border-radius: 10px;
+  color: #2e2f30;
+  margin: 0.5em;
+  padding: 0.5em 1em;
+}
+
+input:focus,
+button:focus {
+  background-color: #2e2f30;
+  border: 2px #fffffa solid;
+  color: #fffffa;
+  outline: none;
+}
+
+.center {
+  background-color: #2e2f30;
+  border-radius: 10px;
+  margin: 2em auto;
+  padding: 1em 2em;
+  width: 70%;
+}
