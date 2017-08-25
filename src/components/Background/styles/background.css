@@ -19,7 +19,18 @@
   padding: 2em;
   position: relative;
   text-align: left;
-  width: 25%;
+}
+
+@media only screen and (max-width : 700px) {
+  .text { width: 80%; }
+}
+
+@media only screen and (min-width : 701px) and (max-width : 1200px) {
+  .text { width: 60%; }
+}
+
+@media only screen and (min-width : 1201px) {
+  .text { width: 33%; }
 }
 
 input,
@@ -28,22 +39,24 @@ button {
   border: 2px #2e2f30 solid;
   border-radius: 10px;
   color: #2e2f30;
-  margin: 0.5em;
+  margin: 0 0.5em;
   padding: 0.5em 1em;
 }
 
 input:focus,
-button:focus {
+button:active {
   background-color: #2e2f30;
   border: 2px #fffffa solid;
   color: #fffffa;
   outline: none;
 }
 
+button:focus { outline: none; }
+
 .center {
   background-color: #2e2f30;
   border-radius: 10px;
   margin: 2em auto;
   padding: 1em 2em;
-  width: 70%;
+  width: 80%;
 }
