@@ -5,8 +5,8 @@ const Blog = () => {
   return (
     <div className={styles.container}>
       <h1>Blog Posts</h1>
-      <ul>
-        <li>A Basic Primer</li>
+      <ul className={styles.list}>
+        <li><a>A Basic Primer</a></li>
       </ul>
     </div>
   );
