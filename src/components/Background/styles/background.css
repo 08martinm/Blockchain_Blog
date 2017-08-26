@@ -34,8 +34,6 @@ button:active {
   outline: none;
 }
 
-button:focus { outline: none; }
-
 .center {
   background-color: #2e2f30;
   border-radius: 10px;
@@ -51,4 +49,9 @@ button:focus { outline: none; }
 .error { 
   background-color: rgba(255, 0, 0, 0.9);
   color: #fff; 
+}
+
+.submitted { 
+  background-color: rgba(0, 255, 0, 0.9);
+  color: #2e2f30; 
 }

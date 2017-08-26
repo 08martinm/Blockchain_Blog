@@ -26,13 +26,15 @@ class Background extends Component {
   }
 
   handleBlur() {
-    this.setState({inputClass: 'unfocused'});
+    if (this.state.inputClass != 'submitted') {
+      this.setState({inputClass: 'unfocused'});
+    }
   }
 
   submitEmail(event) {
     event.preventDefault();
     if (this.state.validEmail) {
-      this.setState({inputClass: 'unfocused', formValue: 'Thank you for signing up!'});
+      this.setState({inputClass: 'submitted', formValue: 'Thank you for signing up!'});
     } else {
       this.setState({inputClass: 'error'});
     }
@@ -65,7 +67,7 @@ class Background extends Component {
           <div className={`col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-7 col-md-offset-5 col-sm-offset-3 col-xs-offset-1 ${styles.center} `}>
             <form onSubmit={this.submitEmail.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}>
               <input value={this.state.formValue} onChange={this.handleChange.bind(this)} placeholder='email address' className={styles[this.state.inputClass]} type='text'/>
-              <button type='Submit'>Submit</button>
+              <button type='Submit' className={styles[this.state.inputClass]}>Submit</button>
             </form>
           </div>
         </div>
