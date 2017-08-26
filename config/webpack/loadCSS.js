@@ -32,10 +32,10 @@ const postcssLoader = {
 exports.loadCSS = {
   test: /\.(css|scss)$/,
   use: env ? 
-    [styleLoader, cssLoader, postcssLoader, 'sass-loader'] :
+    [styleLoader, cssLoader, 'resolve-url-loader', postcssLoader, 'sass-loader'] :
 
     ExtractTextPlugin.extract({ 
       fallback: 'style-loader', 
-      use: [cssLoader, postcssLoader, 'sass-loader'],
+      use: [cssLoader, 'resolve-url-loader', postcssLoader, 'sass-loader'],
     }),
 };

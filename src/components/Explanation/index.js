@@ -1,21 +1,32 @@
 import React from 'react';
 import styles from './styles/explanation.scss';
+import me from '../../../static/HeadShot.jpg';
 
 const Explanation = () => {
   return (
-    <div className={styles.container}>
-      <div className={styles.triangle}></div>
-      <h1>Who am I?</h1>
-      <div className={styles.text}>
-        <p>
+    <div className={`row ${styles.container}`}>
+      <div className="row">
+        <h1 className='col-lg-6 col-md-8 col-sm-10 col-sm-offset-1'>Who am I?</h1>
+      </div>
+      <div className="row">
+        <div className='col-lg-3 col-md-4 col-sm-5 col-sm-offset-1'>
           <h3>One last caveat</h3>
-          Before reading the thoughts and opinions of some stranger
-          on the internet, I get that you probably want to know a little about
-          who I am. Before launching into my bio, let me again say that I do not
-          profess to be an expert in the blockchain field. This site is intended
-          to form a community dedicated to learning about this topic.
-          <br /><br />
-          <h3>About me personally</h3>
+          <p>
+            Before reading the thoughts and opinions of some stranger
+            on the internet, I get that you probably want to know a little about
+            who I am. Before launching into my bio, let me again say that I do not
+            profess to be an expert in the blockchain field. This site is intended
+            to form a community dedicated to learning about this topic.
+            <br /><br />
+          </p>
+        </div>
+        <div className='col-lg-3 col-md-4 col-sm-5' >
+          <img src={me} alt='My face' className={styles.img} />
+        </div>
+      </div>
+      <div className='col-lg-6 col-md-8 col-sm-10 col-sm-offset-1'>
+        <h3>About me personally</h3>
+        <p>
           I&#39;ve had a circuitous path to software development. I graduated
           from a liberal arts school with a major in Spanish Literature and minor
           in Economics. I called over 500 alumni from my alma mater searching for a summer

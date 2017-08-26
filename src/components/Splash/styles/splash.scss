@@ -44,17 +44,13 @@
 
 @include wrapper(container, left, 100%);
 
-.splash-container {
+.container1 {
   background-color: #2e2f30;
   height: 50%;
   margin: auto 0;
   padding: 250px 0 0;
-  position: fixed;
+  position: relative;
   width: 100%;
-}
-
-.landing-wrapper {
-  height: 100%;
 }
 
 .container {
@@ -104,6 +100,7 @@
 
 .arrow-wrapper {
   display: block;
-  margin: 7% auto 0;
+  margin: 7% auto;
+  position: relative;
   width: 4%;
 }

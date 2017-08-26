@@ -36,17 +36,14 @@ class Transactions extends Component {
     } else {
       this.setState(prevState => prevState.ctr++);
     }
-    console.log(this.state.ctr);
   }
 
   render() {
     return (
-      <div className={styles.wrapper}>
-        <div className={styles['ledger-wrapper']}>
-          <div className={styles.ledger}>
-            <div className={styles['transaction-container']}>
-              {this.state.arr.map((item, index) => <Transaction key={index} hash={item.hash} val={item.val} />)}
-            </div>
+      <div className={'col-xs-4 col-xs-offset-4'}>
+        <div className={styles.ledger}>
+          <div className={styles['transaction-container']}>
+            {this.state.arr.map((item, index) => <Transaction key={index} hash={item.hash} val={item.val} />)}
           </div>
         </div>
       </div>

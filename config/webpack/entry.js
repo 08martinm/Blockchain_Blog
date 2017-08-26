@@ -6,6 +6,6 @@ exports.entry = {
   array: true,
   name: 'entry',
   data: env ? 
-    ['react-hot-loader/patch', entryPath] :
-    [entryPath],
+    ['bootstrap-loader', 'react-hot-loader/patch', entryPath] :
+    ['bootstrap-loader', entryPath],
 };

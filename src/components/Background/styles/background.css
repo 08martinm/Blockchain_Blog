@@ -4,33 +4,17 @@
   background-color: #fffffa;
   color: #2e2f30;
   font-family: 'Volkhov', serif;
-  padding: 5% 0;
+  padding: 2% 0 5%;
   position: relative;
   text-align: center;
-  top: 800px;
-  width: 100%;
 }
 
 .text {
   border-radius: 3px 5px;
   border-right: 3px solid #2e2f30;
   border-top: 3px solid #2e2f30;
-  margin: 2% auto;
   padding: 2em;
-  position: relative;
   text-align: left;
-}
-
-@media only screen and (max-width : 700px) {
-  .text { width: 80%; }
-}
-
-@media only screen and (min-width : 701px) and (max-width : 1200px) {
-  .text { width: 60%; }
-}
-
-@media only screen and (min-width : 1201px) {
-  .text { width: 33%; }
 }
 
 input,
@@ -56,9 +40,7 @@ button:focus { outline: none; }
 .center {
   background-color: #2e2f30;
   border-radius: 10px;
-  margin: 2em auto;
   padding: 1em 2em;
   text-align: center;
-  width: 80%;
 }
 

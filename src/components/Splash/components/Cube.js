@@ -4,7 +4,7 @@ import styles from '../styles/cube.scss';
 
 const Cube = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className={`col-xs-3 ${styles.wrapper}`}>
       <div className={styles.cylinder}></div>
       <div className={styles.cube}>
         <section className={classnames(styles.side, styles.front)} />
