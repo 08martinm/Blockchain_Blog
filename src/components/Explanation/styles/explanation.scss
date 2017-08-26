@@ -4,7 +4,8 @@
   background-color: #2e2f30;
   color: #fffffa;
   font-family: 'Volkhov', serif;
-  padding: 1vw 0;
+  margin-bottom: 30px;
+  padding: 1vw 0 0;
   position: relative;
   text-align: center;
 }
@@ -19,6 +20,19 @@
   position: absolute;
   top: -5vw;
   width: 0;
+}
+
+.container::after {
+  background: linear-gradient(-45deg, transparent 75%, #2e2f30 76%) 0 50%,
+    linear-gradient(45deg, transparent 75%, #2e2f30 76%) 0 50%;
+  background-repeat: repeat-x;
+  background-size: 8px 8px, 8px 8px;
+  bottom: -8px;
+  content: ' ';
+  display: block;
+  height: 8px;
+  position: relative;
+  width: 100%;
 }
 
 .img {

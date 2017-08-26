@@ -7,7 +7,7 @@ const render = App => {
   ReactDOM.render(
     <AppContainer>
       <App />
-    </AppContainer>, 
+    </AppContainer>,
     document.getElementById('root')
   );
 };

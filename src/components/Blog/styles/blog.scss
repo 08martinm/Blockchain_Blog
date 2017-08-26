@@ -2,8 +2,24 @@
   background-color: #fffffa;
   color: #2e2f30;
   font-family: 'Volkhov', serif;
-  padding: 1vw 0;
-  position: relative;
+  padding: 3em 0;
   text-align: center;
-  width: 100%;
+}
+
+.list {
+  font-size: 2em;
+  list-style-type: none;
+  margin: 1.5em 0;
+  padding-left: 0;
+  text-decoration: none;
+}
+
+.list > li > a {
+  color: lighten(#2e2f30, 40%);  
+}
+
+.list > li > a:hover {
+  color: #2e2f30;
+  cursor: pointer;
+  text-decoration: none;
 }
