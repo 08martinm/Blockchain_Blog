@@ -5,8 +5,37 @@ class Background extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+      validEmail: true,
+      formValue: '',
+      inputClass: 'unfocused',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.submitEmail = this.submitEmail.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+  }
+
+  handleChange(event) {
+    let newVal = event.target.value;
+    var re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    this.setState({validEmail: re.test(newVal), formValue: newVal, inputClass: re.test(newVal) ? 'valid' : 'invalid'});
+  }
+
+  handleFocus() {
+    this.setState({inputClass: 'focused'});
+  }
+
+  handleBlur() {
+    this.setState({inputClass: 'unfocused'});
+  }
+
+  submitEmail(event) {
+    event.preventDefault();
+    if (this.state.validEmail) {
+      this.setState({inputClass: 'unfocused', formValue: 'Thank you for signing up!'});
+    } else {
+      this.setState({inputClass: 'error'});
+    }
   }
 
   render() {
@@ -34,9 +63,9 @@ class Background extends Component {
         </div>
         <div className={'row'}>
           <div className={`col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-7 col-md-offset-5 col-sm-offset-3 col-xs-offset-1 ${styles.center} `}>
-            <form>
-              <input className='border border-primary' type='text' placeholder='email address'/>
-              <button>Submit</button>
+            <form onSubmit={this.submitEmail.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}>
+              <input value={this.state.formValue} onChange={this.handleChange.bind(this)} placeholder='email address' className={styles[this.state.inputClass]} type='text'/>
+              <button type='Submit'>Submit</button>
             </form>
           </div>
         </div>
