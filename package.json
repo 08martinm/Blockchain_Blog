@@ -31,6 +31,7 @@
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.8",
     "node-sass": "^4.5.3",
+    "nodemailer": "^4.0.1",
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "postcss-loader": "^2.0.6",
