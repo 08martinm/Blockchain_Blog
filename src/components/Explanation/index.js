@@ -6,10 +6,10 @@ const Explanation = () => {
   return (
     <div className={`row ${styles.container}`}>
       <div className="row">
-        <h1 className='col-lg-6 col-md-8 col-sm-10 col-sm-offset-1'>Who am I?</h1>
+        <h1 className='col-lg-6 col-md-8 col-xs-10 col-xs-offset-1'>Who am I?</h1>
       </div>
       <div className="row">
-        <div className='col-lg-3 col-md-4 col-sm-5 col-sm-offset-1'>
+        <div className='col-lg-3 col-md-4 col-sm-5 col-xs-10 col-xs-offset-1'>
           <h3>One last caveat</h3>
           <p>
             Before reading the thoughts and opinions of some stranger
@@ -20,11 +20,11 @@ const Explanation = () => {
             <br /><br />
           </p>
         </div>
-        <div className='col-lg-3 col-md-4 col-sm-5' >
+        <div className='col-lg-3 col-md-4 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0' >
           <img src={me} alt='My face' className={styles.img} />
         </div>
       </div>
-      <div className='col-lg-6 col-md-8 col-sm-10 col-sm-offset-1'>
+      <div className='col-lg-6 col-md-8 col-xs-10 col-xs-offset-1'>
         <h3>About me personally</h3>
         <p>
           I&#39;ve had a circuitous path to software development. I graduated
