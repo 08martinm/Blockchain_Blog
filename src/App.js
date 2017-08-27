@@ -8,7 +8,7 @@ import styles from './App.css';
 
 const App = () => {
   return (
-    <div className={styles['base-css']}>
+    <div className={`container-fluid ${styles.base}`}>
       <Nav />
       <Splash />
       <Background />

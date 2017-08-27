@@ -5,12 +5,14 @@ import styles from './Nav.css';
 const Nav = () => {
   const navList = ['Home', 'Background', 'Explanation'];
   return (
-    <div className={styles.container}>
-      <ul className={styles.ul}>
-        {navList.map((item, index) => <NavItem key={index} value={item} />)}
-      </ul>
-      <div className={styles['text-container']}>
-        <h1 className={styles.title}>Blockchain.</h1>
+    <div className={'row'}>
+      <div className='${styles.container}'>
+        <ul className={styles.ul}>
+          {navList.map((item, index) => <NavItem key={index} value={item} />)}
+        </ul>
+        <div className={styles['text-container']}>
+          <h1 className={styles.title}>Blockchain.</h1>
+        </div>
       </div>
     </div>
   );
