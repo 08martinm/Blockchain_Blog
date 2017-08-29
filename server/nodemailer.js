@@ -12,12 +12,17 @@ let transporter = nodemailer.createTransport({
 });
 
 // setup email data with unicode symbols
-let mailOptions = {
-  from: '"The Blockchain Blog 👻" <the.blockchain.blog@gmail.com>', // sender address
-  to: '08martinm@gmail.com', // list of receivers
-  subject: 'Mailing List - Confirmation Required ✔', // Subject line
-  text: 'Hi, you signed up to be a part of The Blockchain Blog mailing list.', // plain text body
-  html: '<p>Hi, you signed up to be a part of The Blockchain Blog mailing list.</p>', // html body
+let mailOptions = (req, rand) => {
+  let link = 'http://' + req.get('host') + '/api/verify?id=' + rand;
+
+  return({
+    from: '"The Blockchain Blog 🔲⛓️" <the.blockchain.blog@gmail.com>', // sender address
+    to: '08martinm@gmail.com', // list of receivers
+    subject: 'Mailing List - Confirmation Requested', // Subject line
+    html: 'Hi,<br><br>You signed up to be a part of The Blockchain Blog mailing list.<br><br>' + 
+      'Please Click on the link below to verify your email.<br><br>' + 
+      '<a href=' + link + '>Click here to verify.</a>', // html body
+  });
 };
 
 // send mail with defined transport object

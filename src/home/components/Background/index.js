@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './styles/background.css';
+import axios from 'axios';
 
 class Background extends Component {
   constructor(props) {
@@ -34,7 +35,12 @@ class Background extends Component {
   submitEmail(event) {
     event.preventDefault();
     if (this.state.validEmail) {
-      this.setState({inputClass: 'submitted', formValue: 'Thank you for signing up!'});
+      axios.post('/api/emails', {
+        email: this.state.formValue,
+      })
+        .then(
+          this.setState({inputClass: 'submitted', formValue: 'Thank you for signing up!'})
+        );
     } else {
       this.setState({inputClass: 'error'});
     }

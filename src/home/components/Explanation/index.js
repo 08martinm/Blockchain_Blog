@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles/explanation.scss';
-import me from '../../../static/HeadShot.jpg';
+import me from '../../../../static/HeadShot.jpg';
 
 const Explanation = () => {
   return (
