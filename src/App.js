@@ -14,7 +14,7 @@ const App = () => {
       <div className={`container-fluid ${styles.base}`}>
         <Nav />
         <Route exact path="/" component={Home}/>
-        <Route path="/api/verified" component={Verify}/>
+        <Route path="/api/verify" component={Verify}/>
       </div>
     </Router>
   );

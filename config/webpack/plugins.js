@@ -11,6 +11,7 @@ const ExtractText = new ExtractTextPlugin({filename: '[name].[contenthash].css'}
 const HTMLWebpack = new HTMLWebpackPlugin({
   filename: path.join(__dirname, '../../public/index.html'),
   template: './src/index.html',
+  favicon: path.join(__dirname, '../../static/favicon.ico'),
 });
 
 const LoaderOptions = new webpack.LoaderOptionsPlugin({
