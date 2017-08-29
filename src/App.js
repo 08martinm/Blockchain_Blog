@@ -1,15 +1,28 @@
 import React from 'react';
-import Nav from './components/Nav';
-import Splash from './components/Splash';
-import Background from './components/Background';
-import Explanation from './components/Explanation';
-import Blog from './components/Blog';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Nav from './home/components/Nav';
+import Splash from './home/components/Splash';
+import Background from './home/components/Background';
+import Explanation from './home/components/Explanation';
+import Blog from './home/components/Blog';
+import Verify from './pages/verify';
 import styles from './App.css';
 
 const App = () => {
   return (
-    <div className={`container-fluid ${styles.base}`}>
-      <Nav />
+    <Router>
+      <div className={`container-fluid ${styles.base}`}>
+        <Nav />
+        <Route exact path="/" component={Home}/>
+        <Route path="/api/verified" component={Verify}/>
+      </div>
+    </Router>
+  );
+};
+
+const Home = () => {
+  return (
+    <div>
       <Splash />
       <Background />
       <Explanation />
