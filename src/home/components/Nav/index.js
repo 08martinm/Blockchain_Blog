@@ -11,7 +11,7 @@ const Nav = () => {
           {navList.map((item, index) => <NavItem key={index} value={item} />)}
         </ul>
         <div className={styles['text-container']}>
-          <h1 className={styles.title}>Blockchain.</h1>
+          <h2 className={styles.title}>The Blockchain Blog</h2>
         </div>
       </div>
     </div>

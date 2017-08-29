@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../styles/transactions.css';
 import Transaction from './components/Transaction.js';
+import crypto from 'crypto';
 
 class Transactions extends Component {
   constructor(props) {
@@ -21,9 +22,10 @@ class Transactions extends Component {
 
   increment() {
     const nextArr = this.state.arr.slice();
-
+    let rand = Math.random().toString(36);
+    let hash = crypto.createHash('md5').update(rand.toString(), 'utf8').digest('hex');
     nextArr.push({
-      hash: Math.random().toString(36),
+      hash: hash,
       val: Math.round(Math.random().toString() * 100),
     });
 
@@ -40,7 +42,7 @@ class Transactions extends Component {
 
   render() {
     return (
-      <div className={'col-xs-4 col-xs-offset-4'}>
+      <div className={'col-xs-4'}>
         <div className={styles.ledger}>
           <div className={styles['transaction-container']}>
             {this.state.arr.map((item, index) => <Transaction key={index} hash={item.hash} val={item.val} />)}

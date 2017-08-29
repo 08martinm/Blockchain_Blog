@@ -41,11 +41,11 @@ const Explanation = () => {
           boot-camp to further improve my coding skills, which happened to be in high-demand
           at my company. During this bootcamp, I was first exposed to blockchain via working
           on an open-source Ethereum-based CraigsList. I have now returned to my company and
-          completed automating our multivariate regression analysis used in our damages calculations.
+          completed automating our multivariate regression analyses and am searching for new career opportunities.
           <br /><br />
-          As a side note, I am open to new career opportunities. If you are an employer (especially
-          in the blockchain space), I would love to speak with you. Find out more about me and my work
-          experience <a className={styles.link} href='http://www.matthewlmartin.com'> here</a>.
+          If you are an employer (especially in the blockchain space), I would love to speak with you.
+          Find out more about me and my work experience 
+          <a className={styles.link} href='http://www.matthewlmartin.com'> here</a>.
           <br /><br />
         </p>
       </div>

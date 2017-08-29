@@ -49,11 +49,10 @@ class Background extends Component {
   render() {
     return (
       <div className={`row ${styles.container}`}>
-        <div className='col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-7 col-md-offset-5 col-sm-offset-3 col-xs-offset-1'>
+        <div className={styles.container1} ></div>
+        <div className='col-lg-4 col-md-6 col-sm-8 col-xs-10 col-xs-offset-1 col-sm-offset-3 col-md-offset-5 col-lg-offset-7'>
           <h1>What is this site about?</h1>
-        </div>
-        <div className='row'>
-          <div className={`col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-7 col-md-offset-5 col-sm-offset-3 col-xs-offset-1 ${styles.text}`}>
+          <div className={`${styles.text}`}>
             <p>
               These are my scribbling about blockchain. 
               What it is, what it can do, and why we should care.
@@ -68,9 +67,7 @@ class Background extends Component {
               respect your privacy and only notify you of substantive updates.
             </p>
           </div>
-        </div>
-        <div className={'row'}>
-          <div className={`col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-7 col-md-offset-5 col-sm-offset-3 col-xs-offset-1 ${styles.center} `}>
+          <div className={`${styles.center} `}>
             <form onSubmit={this.submitEmail.bind(this)} onFocus={this.handleFocus.bind(this)} onBlur={this.handleBlur.bind(this)}>
               <input value={this.state.formValue} onChange={this.handleChange.bind(this)} placeholder='email address' className={styles[this.state.inputClass]} type='text'/>
               <button type='Submit' className={styles[this.state.inputClass]}>Submit</button>

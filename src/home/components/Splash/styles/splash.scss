@@ -46,41 +46,27 @@
 
 .container1 {
   background-color: #2e2f30;
+  padding-top: 2em;
 }
 
 .container {
   background-color: #2e2f30;
-  border-radius: 2%;
   padding: 1vw 0;
-  position: relative;
 }
 
-.arrow-container-1 {
-  bottom: 0;
-  display: block;
+.arrow-container {
   font-size: 2vw;
-  left: 30%;
-  position: absolute;
-  right: 67%;
-  top: 0;
-}
-
-.arrow-container-2 {
-  bottom: 0;
-  display: block;
-  font-size: 2vw;
-  left: 67%;
-  position: absolute;
-  right: 30%;
-  top: 0;
 }
 
 .arrow-right {
-  animation: blink 20s infinite 0.75s;
   display: block;
   height: 10%;
-  margin: 4vw auto;
-  width: 70%;
+  margin: 5.5vw auto 0;
+  width: 30%;
+}
+
+.arrow-1 {
+  animation: blink 20s infinite 0.75s;
 }
 
 .arrow-2 {
@@ -95,7 +81,7 @@
 
 .arrow-wrapper {
   display: block;
-  margin: 7% auto;
+  margin: 5em auto;
   position: relative;
   width: 4%;
 }

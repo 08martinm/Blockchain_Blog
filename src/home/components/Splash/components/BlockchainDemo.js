@@ -9,9 +9,9 @@ const BlockchainDemo = () => {
   return (
     <div className={`row ${styles.container}`}>
       <Computations />
-      <RightArrow />
+      <RightArrow num={1} />
       <Transactions />
-      <RightArrow />
+      <RightArrow num={2} />
       <Cube />
     </div>
   );

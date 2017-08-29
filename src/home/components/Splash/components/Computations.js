@@ -5,7 +5,7 @@ const Bolt = () => <div className={styles['bolt-wrapper']}><i className={`fa fa-
 
 const Computations = () => {
   return (
-    <div className={`col-xs-3 ${styles.wrapper}`}>
+    <div className={'col-xs-3'}>
       <i className={`fa fa-desktop ${styles.computer} ${styles.c1}`}><Bolt/></i>
       <i className={`fa fa-desktop ${styles.computer} ${styles.c2}`}><Bolt/></i>
       <i className={`fa fa-desktop ${styles.computer} ${styles.c3}`}><Bolt/></i>

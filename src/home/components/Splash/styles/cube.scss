@@ -52,14 +52,6 @@ $cube: 10vw;
 }
 
 /* CSS styles */
-.wrapper {
-  bottom: 0;
-  left: 70%;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
 .cube {
   animation: spin 20s infinite linear, cubeSlide 20s linear infinite;
   display: block;

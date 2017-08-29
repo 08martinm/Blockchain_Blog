@@ -22,7 +22,7 @@ const App = () => {
 
 const Home = () => {
   return (
-    <div>
+    <div className='row'>
       <Splash />
       <Background />
       <Explanation />

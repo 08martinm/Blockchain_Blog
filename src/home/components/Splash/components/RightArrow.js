@@ -1,13 +1,20 @@
 import React from 'react';
 import styles from '../styles/splash.scss';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const ArrowWrapper = () => {
+const RightArrow = props => {
+  let class_name_2 = 'arrow-' + props.num.toString();
+
   return (
-    <div className={`col-xs-1 ${styles['arrow-container-1']}`}>
-      <i className={classnames('fa fa-long-arrow-right', styles['arrow-right'], styles['arrow-1'])} aria-hidden='true'></i>
+    <div className={classnames('col-xs-1', styles['arrow-container'])}>
+      <i className={classnames('fa fa-long-arrow-right', styles['arrow-right'], styles[class_name_2])} aria-hidden='true'></i>
     </div>
   );
 };
 
-export default ArrowWrapper;
+RightArrow.propTypes = {
+  num: PropTypes.number.isRequired,
+};
+
+export default RightArrow;
