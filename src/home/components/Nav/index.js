@@ -6,7 +6,7 @@ const Nav = () => {
   const navList = ['Home', 'Background', 'Explanation'];
   return (
     <div className={'row'}>
-      <div className='${styles.container}'>
+      <div className={`${styles.container}`}>
         <ul className={styles.ul}>
           {navList.map((item, index) => <NavItem key={index} value={item} />)}
         </ul>
