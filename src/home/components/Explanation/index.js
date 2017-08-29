@@ -5,26 +5,25 @@ import me from '../../../../static/HeadShot.jpg';
 const Explanation = () => {
   return (
     <div className={`row ${styles.container}`}>
-      <div className="row">
-        <h1 className='col-lg-6 col-md-8 col-xs-10 col-xs-offset-1'>Who am I?</h1>
-      </div>
-      <div className="row">
-        <div className='col-lg-3 col-md-4 col-sm-5 col-xs-10 col-xs-offset-1'>
-          <h3>One last caveat</h3>
-          <p>
-            Before reading the thoughts and opinions of some stranger
-            on the internet, I get that you probably want to know a little about
-            who I am. Before launching into my bio, let me again say that I do not
-            profess to be an expert in the blockchain field. This site is intended
-            to form a community dedicated to learning about this topic.
-            <br /><br />
-          </p>
-        </div>
-        <div className='col-lg-3 col-md-4 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0' >
-          <img src={me} alt='My face' className={styles.img} />
-        </div>
-      </div>
+      <div className={styles.container1} />      
       <div className='col-lg-6 col-md-8 col-xs-10 col-xs-offset-1'>
+        <h1>Who am I?</h1>
+        <div className='row'>
+          <div className='col-md-5 col-xs-10 col-xs-offset-1'>
+            <h3>One last caveat</h3>
+            <p>
+              Before reading the thoughts and opinions of some stranger
+              on the internet, I get that you probably want to know a little about
+              who I am. Before launching into my bio, let me again say that I do not
+              profess to be an expert in the blockchain field. This site is intended
+              to form a community dedicated to learning about this topic.
+              <br /><br />
+            </p>
+          </div>
+          <div className='col-md-6 col-xs-10 col-xs-offset-1 col-md-offset-0' >
+            <img src={me} alt='My face' className={styles.img} />
+          </div>
+        </div>
         <h3>About me personally</h3>
         <p>
           I&#39;ve had a circuitous path to software development. I graduated

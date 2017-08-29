@@ -9,6 +9,16 @@
   text-align: center;
 }
 
+.container1 {
+  background: linear-gradient(-60deg, rgba(#2e2f30, 0) 0%, rgba(#2e2f30, 1) 50%), url('../../../../../static/chains.jpg') no-repeat;
+  background-size: cover;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+}
+
 .container::before {
   border-bottom: 0 solid transparent;
   border-left: 100vw solid #2e2f30;
