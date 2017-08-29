@@ -12,8 +12,8 @@ let transporter = nodemailer.createTransport({
 });
 
 // setup email data with unicode symbols
-let mailOptions = (req, rand) => {
-  let link = 'http://' + req.get('host') + '/api/verify?id=' + rand;
+let mailOptions = (req, hash) => {
+  let link = 'http://' + req.get('host') + '/api/verify?id=' + hash;
 
   return({
     from: '"The Blockchain Blog 🔲⛓️" <the.blockchain.blog@gmail.com>', // sender address

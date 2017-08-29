@@ -6,7 +6,7 @@ let emailSchema = mongoose.Schema({
     required: true,
   },
   hash: {
-    type: Number,
+    type: String,
     required: true,
   },
   verified: {
