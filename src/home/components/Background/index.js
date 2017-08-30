@@ -56,7 +56,7 @@ class Background extends Component {
           <h1>What is this site about?</h1>
           <div className={`${styles.text}`}>
             <p>
-              These are my scribbling about blockchain. 
+              These are my scribblings about blockchain. 
               What it is, what it can do, and why we should care.
               While I hope to cover many facets of this technology,
               my goal is to provide an in-depth look from a developer&#39;s

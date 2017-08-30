@@ -32,7 +32,7 @@ router.route('/api/verify').get((req, res) => {
     if (err) throw err;
     if (email) {
       console.log('Your email has been verified');
-      res.redirect('/api/verify');
+      res.redirect('/verified');
     } else {
       console.log('email not verified - invalid hash');
       res.json('Invalid validation attempt');
