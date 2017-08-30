@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles/background.css';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class Background extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Background extends Component {
       validEmail: true,
       formValue: '',
       inputClass: 'unfocused',
+      show: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.submitEmail = this.submitEmail.bind(this);
@@ -24,6 +26,7 @@ class Background extends Component {
 
   handleFocus() {
     this.setState({inputClass: 'focused'});
+    this.setState({show: false});
   }
 
   handleBlur() {
@@ -38,9 +41,8 @@ class Background extends Component {
       axios.post('/api/emails', {
         email: this.state.formValue,
       })
-        .then(
-          this.setState({inputClass: 'submitted', formValue: 'Thank you for signing up!'})
-        );
+        .then(this.setState({inputClass: 'submitted'}))
+        .then(this.setState({show: true}));
     } else {
       this.setState({inputClass: 'error'});
     }
@@ -73,6 +75,7 @@ class Background extends Component {
               <button type='Submit' className={styles[this.state.inputClass]}>Submit</button>
             </form>
           </div>
+          <Instructions show={this.state.show} email={this.state.formValue} />
         </div>
       </div>
     );
@@ -80,3 +83,19 @@ class Background extends Component {
 }
 
 export default Background;
+
+const Instructions = props => {
+  let cName = props.show ? 'show' : 'hide';
+  return (
+    <div className={styles[cName]}>
+      Thank you for signing up!<br />
+      {`An email was sent to ${props.email}.`}<br />
+      Click on the confirmation link in the email to confirm your account.
+    </div>
+  );
+};
+
+Instructions.propTypes = {
+  show: PropTypes.bool.isRequired,
+  email: PropTypes.string.isRequired,
+};
