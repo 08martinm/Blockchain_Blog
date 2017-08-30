@@ -1,0 +1,40 @@
+.page {
+  background-color: #fffffa;
+  color: #2e2f30;
+}
+
+.comments {
+  background-color: #2e2f30;
+  color: #fffffa;
+  height: 98vh;
+  left: 51vw;
+  position: fixed;
+  top: 1vh;
+  width: 48vw;
+}
+
+.iframe {
+  height: 80vh;
+  width: 100%;
+}
+
+.flexify {
+  display: flex;
+}
+
+.flexcols {
+  display: flex;
+  flex-direction: column;
+}
+
+.selector {
+  margin: auto;
+}
+
+.circle {
+  border: 4px solid #2e2f30;
+  border-radius: 25px/25px;
+  height: 25px;
+  margin: auto;
+  width: 25px;
+}
