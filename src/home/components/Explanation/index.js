@@ -6,7 +6,7 @@ const Explanation = () => {
   return (
     <div className={`row ${styles.container}`}>
       <div className={styles.container1} />      
-      <div className='col-lg-6 col-md-8 col-xs-10 col-xs-offset-1'>
+      <div className={`${styles.text} col-lg-6 col-md-8 col-xs-10 col-xs-offset-1`}>
         <h1>Who am I?</h1>
         <div className='row'>
           <div className='col-md-5 col-xs-10 col-xs-offset-1'>

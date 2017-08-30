@@ -7,6 +7,19 @@
   text-align: center;
 }
 
+.container::before {
+  background: linear-gradient(-45deg, transparent 75%, #2e2f30 76%) 0 50%,
+    linear-gradient(45deg, transparent 75%, #2e2f30 76%) 0 50%;
+  background-repeat: repeat-x;
+  background-size: 8px 8px, 8px 8px;
+  content: ' ';
+  display: block;
+  height: 8px;
+  position: relative;
+  top: -3em;
+  width: 100%;
+}
+
 .list {
   list-style-type: none;
   margin: 1.5em 0;
@@ -22,4 +35,9 @@
   color: #2e2f30;
   cursor: pointer;
   text-decoration: none;
+}
+
+.semitransparent {
+  background-color: rgba(#fffffa, 0.6);
+  border-radius: 15px;
 }
