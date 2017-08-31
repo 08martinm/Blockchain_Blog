@@ -28,10 +28,10 @@ $screen-md-max: $screen-lg-min;
 
 @media(max-width: $screen-md-min) {
   .comments {
-    height: 48vh;
-    left: 0;
+    height: 47.5vh;
+    left: 0.5vw;
     top: 52vh;
-    width: 99vw;
+    width: 97vw;
   }
 }
 
