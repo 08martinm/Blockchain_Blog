@@ -7,11 +7,32 @@
   background-color: #2e2f30;
   border-radius: 20px;
   color: #fffffa;
-  height: 96vh;
-  left: 52vw;
   position: fixed;
-  top: 2vh;
-  width: 46vw;
+}
+
+$screen-sm-min: 768px;
+$screen-xs-max: $screen-sm-min;
+$screen-md-min: 992px;
+$screen-sm-max: $screen-md-min;
+$screen-lg-min: 1200px;
+$screen-md-max: $screen-lg-min;
+
+@media(min-width: $screen-md-min) {
+  .comments {
+    height: 96vh;
+    left: 52vw;
+    top: 2vh;
+    width: 46vw;
+  }
+}
+
+@media(max-width: $screen-md-min) {
+  .comments {
+    height: 48vh;
+    left: 0;
+    top: 52vh;
+    width: 99vw;
+  }
 }
 
 .iframe {
@@ -35,7 +56,25 @@
 .circle {
   border: 4px solid #2e2f30;
   border-radius: 25px/25px;
+  cursor: pointer;
   height: 25px;
   margin: auto;
   width: 25px;
+}
+
+.selected {
+  background-color: rgb(0, 255, 0);
+}
+
+.selectedborder {
+  animation: fadein 0.75s;
+  border: solid 2px rgb(0, 255, 0);
+  border-radius: 10px;
+  margin: 1em;
+  padding: 1em;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
