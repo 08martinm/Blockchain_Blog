@@ -39,7 +39,7 @@ class WhitePaper extends Component {
   constructor() {
     super();
     this.state = {
-      selected: '',
+      selected: 'id_1',
     };
     this.handleClick = this.handleClick.bind(this);
   }
