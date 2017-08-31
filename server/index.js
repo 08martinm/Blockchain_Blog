@@ -11,12 +11,12 @@ let app = express();
 
 app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.json());
+app.use(routes);
 
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../', 'public', 'index.html'));
 });
 
-app.use(routes);
 
 app.listen(port, () => {
   console.log('Server is listening on port', port);

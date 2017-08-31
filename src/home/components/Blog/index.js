@@ -9,7 +9,7 @@ const Blog = () => {
         <h1>Blog Posts</h1>
         <ul className={styles.list}>
           <li>
-            <Link to='/2017/09/01'><h3>Let&#39;s Start from the Beginning</h3></Link>
+            <Link to='/post1'><h3>Let&#39;s Start from the Beginning</h3></Link>
             <p>
               Dust off those critical reading skills and join me in taking an in-depth dive
               into the white paper that inspired the crypto-currency movement: 

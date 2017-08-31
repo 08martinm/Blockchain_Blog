@@ -12,7 +12,7 @@ const App = () => {
         <Switch>
           <Route exact path='/' component={Home}/>
           <Route path="/verified" component={Verify}/>
-          <Route path='/2017/09/01' component={Post1}/>
+          <Route path='/post1' component={Post1}/>
           <Redirect to='/' />
         </Switch>
       </div>
