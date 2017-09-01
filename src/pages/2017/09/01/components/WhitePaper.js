@@ -37,7 +37,7 @@ ClickItem.propTypes = {
 
 const WhitePaper = props => (
   <div className='col-xs-12'>
-    <div className='page-header'>
+    <div className={`page-header ${styles.title}`}>
       <ClickItem onclick={props.onclick} selected={props.selected} item='id_1'>
         <h1 className='text-center'>
           Bitcoin: <br /> A Peer-to-Peer Electronic Cash System <br /><small>Satoshi Nakamoto</small>

@@ -1,0 +1,51 @@
+.nav {
+  background-color: rgba(#2e2f30, 0);
+  color: #fffffa;
+  position: fixed;
+  text-align: center;
+  top: -3em;
+  transition: top 0.3s, background-color 0.5s;
+  z-index: 1;
+}
+
+.shownav {
+  background-color: rgba(#2e2f30, 1);
+  top: 0;
+  transition: top 0.3s 0.15s, background-color 0.5s 0.15s;
+}
+
+.back {
+  color: #fffffa;
+  float: left;
+  margin: 1.5em 0 0 2.5em;
+}
+
+.back:hover {
+  color: #fffffa;
+  text-decoration: none;
+}
+
+.back:hover > .arrow {
+  animation: bounce 2s linear 0s infinite;
+  color: #fffffa;
+  transition: color 0.5s;
+}
+
+.title {
+  font-size: 1.5em;
+  line-height: 0.75em;
+}
+
+.arrow {
+  color: #2e2f30;
+  left: 1.5em;
+  margin: 0 1em;
+  position: absolute;
+  transition: color 0.5s;
+}
+
+@keyframes bounce {
+  0% {left: 1.25em; }
+  50% { left: 1.5em; }
+  100% {left: 1.25em; }
+}

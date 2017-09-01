@@ -3,10 +3,15 @@
   color: #2e2f30;
 }
 
+.whitepaper {
+  margin-top: 3em;
+}
+
 .comments {
   background-color: #2e2f30;
   border-radius: 20px;
   color: #fffffa;
+  padding: 3em;
   position: fixed;
 }
 
@@ -19,9 +24,18 @@ $screen-md-max: $screen-lg-min;
 
 @media(min-width: $screen-md-min) {
   .comments {
-    height: 96vh;
+    height: 94vh;
     left: 52vw;
-    top: 2vh;
+    top: 5.2vh;
+    transition: height 0.3s, top 0.3s;
+    width: 46vw;
+  }
+
+  .expand {
+    height: 98vh;
+    left: 52vw;
+    top: 1vh;
+    transition: height 0.3s 0.3s, top 0.3s 0.3s;
     width: 46vw;
   }
 }
@@ -32,6 +46,10 @@ $screen-md-max: $screen-lg-min;
     left: 0.5vw;
     top: 52vh;
     width: 99vw;
+  }
+
+  .whitepaper {
+    margin-bottom: 50vh;
   }
 }
 
