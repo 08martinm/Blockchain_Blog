@@ -101,4 +101,5 @@ styles:
   responsive-utilities: true
 
 ### Bootstrap scripts
-scripts: false
+scripts:
+  modal: true

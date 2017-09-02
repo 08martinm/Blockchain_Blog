@@ -8,11 +8,12 @@
 }
 
 .comments {
-  background-color: #2e2f30;
-  border-radius: 20px;
-  color: #fffffa;
-  padding: 3em;
+  background-color: #edeff4;
   position: fixed;
+}
+
+.border {
+  height: 100%;
 }
 
 $screen-sm-min: 768px;
@@ -24,11 +25,14 @@ $screen-md-max: $screen-lg-min;
 
 @media(min-width: $screen-md-min) {
   .comments {
-    height: 94vh;
+    border-left: 1px dotted #2e2f30;
+    border-radius: 0 10px 10px 0;
+    height: 92vh;
     left: 52vw;
-    top: 5.2vh;
+    padding: 3em;  
+    top: 4em;
     transition: height 0.3s, top 0.3s;
-    width: 46vw;
+    width: 47vw;
   }
 
   .expand {
@@ -42,10 +46,19 @@ $screen-md-max: $screen-lg-min;
 
 @media(max-width: $screen-md-min) {
   .comments {
-    height: 47.5vh;
-    left: 0.5vw;
-    top: 52vh;
-    width: 99vw;
+    border-top: 1px dotted #2e2f30;
+    border-radius: 0 0 10px 10px;
+    height: 40vh;
+    left: 1vw;
+    padding: 1.5em 3em;
+    top: 59.75vh;
+    width: 98vw;
+  }
+
+  .comments::before {
+    color: rgb(255, 0, 0);
+    height: 1em;
+    width: 100%;
   }
 
   .whitepaper {
@@ -88,8 +101,6 @@ $screen-md-max: $screen-lg-min;
   animation: fadein 0.75s;
   border: solid 2px rgb(0, 255, 0);
   border-radius: 10px;
-  margin: 1em;
-  padding: 1em;
 }
 
 @keyframes fadein {

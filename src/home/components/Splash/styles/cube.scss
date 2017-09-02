@@ -39,16 +39,16 @@ $cube: 10vw;
 }
 
 @keyframes cubeSlide {
-  0% { top: 0; }
-  70% { top: 0; }
-  100% { top: -50vw; }
+  0% { right: 0; }
+  70% { right: 0; }
+  100% { right: -25vw; }
 }
 
 @keyframes cylinderSlide {
-  0% { top: -64vw; }
-  40% { top: -64vw; }
-  70% { top: -14vw; }
-  100% { top: -64vw; }
+  0% { right: -40vw; }
+  40% { right: -40vw; }
+  70% { right: -15vw; }
+  100% { right: -40vw; }
 }
 
 /* CSS styles */
@@ -88,9 +88,10 @@ $cube: 10vw;
   margin: -10vw 9.5vw 0;
   overflow: hidden;
   position: absolute;
-  top: -25vw;
+  right: -10vw;
+  top: $cube / 2 - 1.5vw;
+  transform: rotate(90deg);
   width: 3vw;
-
 }
 
 .cylinder::before,
@@ -101,6 +102,7 @@ $cube: 10vw;
   height: 5vw;
   margin: 0 auto;
   position: relative;
+  transform: rotate(90deg);
   width: 3vw;
 }
 

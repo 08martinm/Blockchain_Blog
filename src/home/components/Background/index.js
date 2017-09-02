@@ -50,7 +50,7 @@ class Background extends Component {
 
   render() {
     return (
-      <div className={`row ${styles.container}`}>
+      <div id='Site' className={`row ${styles.container}`}>
         <div className={styles.container1} />
         <div className='col-lg-4 col-md-6 col-sm-8 col-xs-10 col-xs-offset-1 col-sm-offset-3 col-md-offset-5 col-lg-offset-7'>
           <h1>What is this site about?</h1>

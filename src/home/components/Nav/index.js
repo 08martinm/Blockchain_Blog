@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styles from './Nav.css';
 
 const Nav = () => {
-  const navList = ['Home', 'Background', 'Explanation'];
+  const navList = ['Posts', 'Site', 'Author'];
   return (
-    <div className={'row'}>
+    <div>
       <div className={`${styles.container}`}>
         <ul className={styles.ul}>
           {navList.map((item, index) => <NavItem key={index} value={item} />)}
@@ -21,7 +21,7 @@ const Nav = () => {
 const NavItem = (props) => {
   return (
     <li className={styles.li}>
-      <a className={styles.a}>{props.value}</a>
+      <a href={'#' + props.value} className={styles.a}>{props.value}</a>
     </li>
   );
 };

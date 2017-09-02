@@ -1,11 +1,19 @@
 .nav {
   background-color: rgba(#2e2f30, 0);
   color: #fffffa;
+  display: flex;
   position: fixed;
   text-align: center;
   top: -3em;
   transition: top 0.3s, background-color 0.5s;
   z-index: 1;
+}
+
+.container {
+  align-self: stretch;
+  display: block;
+  float: left;
+  margin: auto 0;
 }
 
 .shownav {
@@ -16,13 +24,27 @@
 
 .back {
   color: #fffffa;
-  float: left;
-  margin: 1.5em 0 0 2.5em;
+  height: 100%;
+  margin: auto 0;
 }
 
 .back:hover {
   color: #fffffa;
   text-decoration: none;
+}
+
+.arrow {
+  color: #2e2f30;
+  left: -0.7em;
+  margin: auto 0;
+  position: relative;
+  transition: color 0.5s;
+}
+
+@keyframes bounce {
+  0% {left: -0.3em; }
+  50% { left: -0.6em; }
+  100% {left: -0.3em; }
 }
 
 .back:hover > .arrow {
@@ -33,19 +55,9 @@
 
 .title {
   font-size: 1.5em;
-  line-height: 0.75em;
+  margin: 0.5em 0;
 }
 
-.arrow {
-  color: #2e2f30;
-  left: 1.5em;
-  margin: 0 1em;
-  position: absolute;
-  transition: color 0.5s;
-}
-
-@keyframes bounce {
-  0% {left: 1.25em; }
-  50% { left: 1.5em; }
-  100% {left: 1.25em; }
+.titlecontainer {
+  margin: 0 auto;
 }

@@ -44,14 +44,27 @@
 
 @include wrapper(container, left, 100%);
 
-.container1 {
-  background-color: #2e2f30;
-  padding-top: 12em;
+.container {
+  padding: 0 0 6em;
 }
 
-.container {
+.container1 { 
   background-color: #2e2f30;
-  padding: 1vw 0;
+  padding: 8em 0 5em;
+}
+
+.container1::after {
+  background: linear-gradient(45deg, transparent 75%, #2e2f30 76%) 0 50%,
+    linear-gradient(-45deg, transparent 75%, #2e2f30 76%) 0 50%;
+  background-repeat: repeat-x;
+  background-size: 1em 1em, 1em 1em;
+  content: ' ';
+  display: block;
+  height: 1em;
+  position: relative;
+  bottom: -6em;
+  width: 100%;
+  z-index: 1;
 }
 
 .arrow-container {
@@ -81,7 +94,7 @@
 
 .arrow-wrapper {
   display: block;
-  margin: 5em auto;
+  margin: 0 auto;
   position: relative;
   width: 1em;
 }

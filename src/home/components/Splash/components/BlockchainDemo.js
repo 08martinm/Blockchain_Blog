@@ -7,7 +7,7 @@ import styles from '../styles/splash.scss';
 
 const BlockchainDemo = () => {
   return (
-    <div className={`row ${styles.container}`}>
+    <div className={`${styles.container}`}>
       <Computations />
       <RightArrow num={1} />
       <Transactions />

@@ -5,14 +5,7 @@ import Comment from './components/Comment';
 import Nav from './components/Nav';
 import axios from 'axios';
 import classnames from 'classnames';
-
-let instructions = `Hi, and welcome to an in-depth reading of
-  the Satoshi White Paper. The purpose of this page is to encourage a
-  close read of the primary source along with community-driven opinion
-  and analysis. I suggest taking a moment to quickly read the entire
-  white paper (don't worry it's not very long). Afterwards, click on the circles
-  next to each paragraph to review community-sourced comments.`;
-let signIn = 'If you\'d like to leave a comment, please sign in.';
+import PropTypes from 'prop-types';
 
 class Post1 extends Component {
   constructor() {
@@ -67,13 +60,42 @@ class Post1 extends Component {
         </div>
         <div className={classnames('col-xs-12', 'col-md-6', styles.comments, expandView)}>
           {this.state.selected != '' ?
-            this.state.posts.map((val, key) => <Comment key={key} val={val} />) :
-            (<div><p>{instructions}</p><br /><br /><p>{signIn}</p></div>)
+            <Comments title={this.state.selected} posts={this.state.posts} /> :
+            <Instructions />
           }
         </div>
       </div>
     );
   }
 }
+
+let Instructions = () => (
+  <div>
+    <h3>Instructions</h3>
+    <p>
+      <br/>
+      Hi and welcome to a community reading of the Satoshi White Paper.<br/>
+      <br/>
+      The purpose of this page is to complement a close reading of the primary source
+      with community analysis. I suggest taking a moment to quickly read the entire
+      white paper (don&#39;t worry it&#39;s not very long). Afterwards, click on the circles
+      next to each paragraph to review community-sourced comments.<br/>
+      <br/>
+      If you&#39;d like to leave a comment or vote for one, please <a href=''>sign in</a>.
+    </p>
+  </div>
+);
+
+let Comments = props => (
+  <div>
+    <h3>{`${props.title}`}</h3>
+    {props.posts.map((val, key) => <Comment key={key} val={val} />)}
+  </div>
+);
+
+Comments.propTypes = {
+  title: PropTypes.string.isrequired,
+  posts: PropTypes.array.isRequired,
+};
 
 export default Post1;
