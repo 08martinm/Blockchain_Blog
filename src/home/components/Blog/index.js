@@ -6,7 +6,7 @@ const Blog = () => {
   return (
     <div id='Posts' className={`row ${styles.container}`}>
       <div className={`${styles.semitransparent} col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1`}>
-        <h1>Blog Posts</h1>
+        <h1>Lessons</h1>
         <ul className={styles.list}>
           <li>
             <Link to='/post1'><h3>Let&#39;s Start from the Beginning</h3></Link>

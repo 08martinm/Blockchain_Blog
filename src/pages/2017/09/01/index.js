@@ -54,7 +54,7 @@ class Post1 extends Component {
     let expandView = this.state.showNav ? '' : styles.expand;
     return (
       <div className={`row ${styles.page}`}>
-        <Nav show={this.state.showNav} />
+        <Nav show={this.state.showNav} signedin={false} />
         <div className={`${styles.whitepaper} col-xs-12 col-md-6`}>
           <WhitePaper onclick={this.handleClick.bind(this)} selected={this.state.selected} />
         </div>
@@ -78,17 +78,19 @@ let Instructions = () => (
       <br/>
       The purpose of this page is to complement a close reading of the primary source
       with community analysis. I suggest taking a moment to quickly read the entire
-      white paper (don&#39;t worry it&#39;s not very long). Afterwards, click on the circles
+      white paper (don&#39;t worry, it&#39;s not very long). Afterwards, click on the circles
       next to each paragraph to review community-sourced comments.<br/>
       <br/>
-      If you&#39;d like to leave a comment or vote for one, please <a href=''>sign in</a>.
+      If you&#39;d like to leave a comment or vote for one, please <a href='/login'>sign in</a>.
     </p>
   </div>
 );
 
 let Comments = props => (
   <div>
-    <h3>{`${props.title}`}</h3>
+    <h2 className='text-center'>Comments</h2>
+    <h3 className='text-center'>{`${props.title}`}</h3>
+    <div className={styles.divider}/>
     {props.posts.map((val, key) => <Comment key={key} val={val} />)}
   </div>
 );

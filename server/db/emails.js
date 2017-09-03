@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-let emailSchema = mongoose.Schema({
+let EmailSchema = new mongoose.Schema({
   email: {
     type: String,
+    unique: true,
     required: true,
+    trim: true,
   },
   hash: {
     type: String,
@@ -20,7 +22,7 @@ let emailSchema = mongoose.Schema({
   },
 });
 
-let Email = mongoose.model('Email', emailSchema);
+let Email = mongoose.model('Email', EmailSchema);
 
 module.exports.Email = Email;
 module.exports.getEmails = (cb, limit) => Email.find(cb).limit(limit);

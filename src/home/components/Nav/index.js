@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Nav.css';
+import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 const Nav = () => {
   const navList = ['Posts', 'Site', 'Author'];
@@ -8,10 +10,13 @@ const Nav = () => {
     <div>
       <div className={`${styles.container}`}>
         <ul className={styles.ul}>
-          {navList.map((item, index) => <NavItem key={index} value={item} />)}
+          {navList.map(item => <NavItem key={item} value={item} />)}
         </ul>
+        <li className={classnames(styles.li, styles.right)}>
+          <Link to='login' className={styles.a}>Login</Link>
+        </li>
         <div className={styles['text-container']}>
-          <h2 className={styles.title}>The Blockchain Blog</h2>
+          <h2 className={styles.title}>Teaching Blockchain</h2>
         </div>
       </div>
     </div>

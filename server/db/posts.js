@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let postsSchema = mongoose.Schema({
+let PostsSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -23,7 +23,7 @@ let postsSchema = mongoose.Schema({
   },
 });
 
-let Posts = mongoose.model('Posts', postsSchema);
+let Posts = mongoose.model('Posts', PostsSchema);
 
 module.exports.Posts = Posts;
 module.exports.getPosts = (section_id, cb, limit) => Posts.find(section_id, cb).limit(limit);

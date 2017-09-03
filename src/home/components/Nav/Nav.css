@@ -8,24 +8,26 @@
 }
 
 .ul {
+  display: flex;
+  justify-content: center;
   list-style-type: none;
   margin: 0;
   overflow: hidden;
   padding: 0;
-  text-align: center;
 }
 
 .li {
-  display: inline-block;
+  display: flex;
   margin: 0;
-  width: 150px;
+  width: 100px;
 }
 
 .li .a {
   border-radius: 5px;
   color: #fffffa;
   display: block;
-  padding: 5px 10px;
+  margin: 0 auto;
+  padding: 5px 30px;
   text-align: center;
   text-decoration: none;
 }
@@ -45,3 +47,9 @@
   font-family: 'Volkhov', serif;
 }
 
+.right {
+  display: inline-block;
+  position: absolute;
+  right: 1em;
+  top: 0;
+}

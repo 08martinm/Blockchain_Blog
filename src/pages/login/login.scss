@@ -1,0 +1,57 @@
+.background {
+  background: url('../../../static/circles-and-roundabouts.png');
+  background-repeat: repeat;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  background-color: #2e2f30;
+  border: 1px solid #fffffa;
+  border-radius: 8px;
+  color: #fffffa;
+  margin-top: 10em;
+}
+
+.view {
+  border: 1px solid #fffffa;
+  display: inline-block;
+  font-size: 1.2em;
+  margin: 1em 0 0;
+  padding: 1em 0;
+  text-align: center;
+  width: 50%;
+}
+
+.view:hover {
+  background-color: darken(#fffffa, 20%);
+  color: #2e2f30;
+}
+
+.forms {
+  padding: 3em 0 5em;
+}
+
+.input {
+  width: 100%;
+}
+
+.input:focus {
+  background-color: lighten(#2e2f30, 20%);
+  border: 2px solid darken(#fffffa, 20%);
+  border-radius: 5px;
+}
+
+.btn {
+  display: block;
+  padding: 1em;
+  margin: 3em auto 0;
+  width: 7em;
+}
+
+.btn:hover, .btn:focus {
+  background-color: lighten(#2e2f30, 20%);
+  border: 2px solid darken(#fffffa, 20%);
+  border-radius: 5px;
+  outline: none;
+}
