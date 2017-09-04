@@ -4,6 +4,12 @@ const Posts = require('./db/posts.js');
 const User = require('./db/users.js');
 const mail = require('./nodemailer.js');
 const crypto = require('crypto');
+const path = require('path');
+
+// Home
+router.route('/').get((req, res) => {
+  res.sendFile(path.join(__dirname, '../', 'public', 'index.html'));
+});
 
 // Emails
 router.route('/api/emails').get((req, res) => {
