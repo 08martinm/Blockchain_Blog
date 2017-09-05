@@ -1,9 +1,18 @@
 const router = require('express').Router();
 const Emails = require('./emails.js');
+const User = require('./users.js');
 const Comments = require('./comments.js');
-const Login = require('./logins.js');
-const Logout = require('./logouts.js');
+const Login = require('./login.js');
+const Logout = require('./logout.js');
 const path = require('path');
+
+// let authenticationMiddleware = () => {
+//   return (req, res, next) => {
+//     console.log( `req.session.user: ${JSON.stringify(req.session.passport)}`);
+//     if (req.isAuthenticated()) return next();
+//     res.redirect('/login');
+//   };
+// };
 
 // Home
 router.get('/', (req, res) => {
@@ -13,22 +22,17 @@ router.get('/', (req, res) => {
 // Emails
 router.get('/api/emails', Emails.get);
 router.post('/api/emails', Emails.post);
-router.get('/api/verify', Emails.verify);
+router.put('/api/emails', Emails.verify);
+
+// Users
+router.get('/api/users', User.get);
 
 // Posts
-router.get('/api/posts', Comments.get);
-router.post('/api/posts', Comments.post);
+router.get('/api/comments', Comments.get);
+router.post('/api/comments', Comments.post);
 
 // Login/Logout
-router.post('/api/login', authenticationMiddleware, Login.post);
+router.post('/api/login', Login.post);
 router.get('/api/logout', Logout.get);
-
-let authenticationMiddleware = () => {
-  return (req, res, next) => {
-    console.log( `req.session.user: ${JSON.stringify(req.session.passport)}`);
-    if (req.isAuthenticated()) return next();
-    res.redirect('/login');
-  };
-};
 
 module.exports = router;

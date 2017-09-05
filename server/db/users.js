@@ -19,10 +19,6 @@ let UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  passwordConf: {
-    type: String,
-    default: true,
-  },
 });
 
 UserSchema.pre('save', function(next) {

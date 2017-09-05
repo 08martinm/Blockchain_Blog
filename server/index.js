@@ -3,16 +3,14 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const passport = require('passport');
+const passport = require('./passport.js');
 const flash = require('connect-flash');
-require('./passport')(passport);
 const routes = require('./routes/index.js');
 const port = process.env.PORT || 5000;
 
 const MongoStore = require('connect-mongo')(session);
 mongoose.connect('mongodb://localhost/blog');
 let db = mongoose.connection;
-
 
 let app = express();
 app.use(morgan('dev'));

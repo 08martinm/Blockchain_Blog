@@ -1,5 +1,5 @@
 const Comments = require('../db/comments.js');
-const User = require('../bd/users.js');
+const User = require('../db/users.js');
 
 module.exports = {
   get: (req, res) => {

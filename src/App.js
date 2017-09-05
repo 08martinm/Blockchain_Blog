@@ -24,10 +24,10 @@ class App extends Component {
       <Router>
         <div className={`container-fluid ${styles.base}`}>
           <Switch>
-            <Route exact path='/' component={Home} loggedin={this.state.loggedin} loginout={this.loginout.bind(this)}/>
-            <Route path="/verified" component={Verify} loggedin={this.state.loggedin} loginout={this.loginout.bind(this)}/>
-            <Route path='/post1' component={Post1} loggedin={this.state.loggedin} loginout={this.loginout.bind(this)}/>
-            <Route path='/login' component={Login} loggedin={this.state.loggedin} loginout={this.loginout.bind(this)}/>
+            <Route exact path='/' component={Home} />
+            <Route path="/verified" component={Verify} />
+            <Route path='/lesson_1' component={Post1} />
+            <Route path='/login' component={Login} />
             <Redirect to='/' />
           </Switch>
         </div>
