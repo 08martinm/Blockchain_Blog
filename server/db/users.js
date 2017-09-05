@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 let UserSchema = new mongoose.Schema({
   email: {
@@ -24,25 +25,9 @@ let UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.statics.authenticate = (email, pw, cb) => {
-  User.findOne({email: email})
-    .exec((err, user) => {
-      if (err) throw err;
-      if (!user) {
-        let err = new Error('User not found.');
-        err.status = 401;
-        return cb(err);
-      }
-      bcrypt.compare(pw, user.password, (err, result) => {
-        if (result === true) return cb(null, user);
-        return cb();
-      });
-    });
-};
-
 UserSchema.pre('save', function(next) {
   let user = this;
-  bcrypt.hash(user.password, 10, (err, hash) => {
+  bcrypt.hash(user.password, saltRounds, (err, hash) => {
     if (err) throw err;
     user.password = hash;
     next();

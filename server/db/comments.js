@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let PostsSchema = new mongoose.Schema({
+let CommentsSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -23,8 +23,8 @@ let PostsSchema = new mongoose.Schema({
   },
 });
 
-let Posts = mongoose.model('Posts', PostsSchema);
+let Comments = mongoose.model('Comments', CommentsSchema);
 
-module.exports.Posts = Posts;
-module.exports.getPosts = (section_id, cb, limit) => Posts.find(section_id, cb).limit(limit);
-module.exports.addPost = (data, cb) => Posts.create(data, cb);
+module.exports.Comments = Comments;
+module.exports.getComments = (section_id, cb, limit) => Comments.find(section_id, cb).limit(limit);
+module.exports.addComment = (data, cb) => Comments.create(data, cb);
