@@ -21,10 +21,10 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit(event) {
+  handleSubmit(event, view) {
     event.preventDefault();
 
-    let body = this.state.view === 'login' ?
+    let body = (view === 'signup') ?
       {
         email: this.state.email,
         username: this.state.username,
@@ -43,7 +43,6 @@ class Login extends Component {
   handleChange(evt) {
     let newState = {};
     newState[evt.target.id] = evt.target.value;
-    console.log('event fired; evt is', evt.target.id, 'newstate is', newState);
     this.setState(newState);
   }
 
@@ -61,8 +60,8 @@ class Login extends Component {
           <div id='login' onClick={this.changeView.bind(this)} className={`${styles.view}`}>Login</div>
           <div className='col-xs-12'>
             {(this.state.view === 'signup') ? 
-              <CreateAcct handleSubmit={this.handleSubmit} handleChange={this.handleChange.bind(this)} vals={this.state}/> :
-              <SignIn handleSubmit={this.handleSubmit.bind(this)} handleChange={this.handleChange.bind(this)} vals={this.state}/>}
+              <CreateAcct handleSubmit={this.handleSubmit} view={this.state.view} handleChange={this.handleChange.bind(this)} vals={this.state}/> :
+              <SignIn handleSubmit={this.handleSubmit.bind(this)} view={this.state.view} handleChange={this.handleChange.bind(this)} vals={this.state}/>}
           </div>
         </div>
       </div>
@@ -73,7 +72,7 @@ class Login extends Component {
 export default Login;
 
 const CreateAcct = props => (
-  <form className={styles.forms} onSubmit={props.handleSubmit}>
+  <form className={styles.forms} onSubmit={evt => props.handleSubmit(evt, props.view)}>
     <h5 className='text-center'>Email<br/>(never made public)</h5>
     <input id='email' onChange={props.handleChange} value={props.vals.email} type='text' className={styles.input} placeholder='Email' />
     <h5 className='text-center'>Username</h5>
@@ -90,10 +89,11 @@ CreateAcct.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   vals: PropTypes.object.isRequired,
+  view: PropTypes.string.isRequired,
 };
 
 const SignIn = props => (
-  <form className={styles.forms} onSubmit={props.handleSubmit}>
+  <form className={styles.forms} onSubmit={evt => props.handleSubmit(evt, props.view)}>
     <h5 className='text-center'>Email or Username<br/>(Email never made public)</h5>
     <input id='logemail' onChange={props.handleChange} value={props.vals.logemail} type='text' className={styles.input} placeholder='Email or Username' />
     <h5 className='text-center'>Password</h5>
@@ -106,4 +106,5 @@ SignIn.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   vals: PropTypes.object.isRequired,
+  view: PropTypes.string.isRequired,
 };
