@@ -4,8 +4,8 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
-const passport = require('./passport.js');
 const flash = require('connect-flash');
+const passport = require('./passport.js');
 const routes = require('./routes/index.js');
 const port = process.env.PORT || 5000;
 

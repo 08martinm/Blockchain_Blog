@@ -5,7 +5,7 @@ const Comments = require('./comments.js');
 const Login = require('./login.js');
 const Logout = require('./logout.js');
 const path = require('path');
-const passport = require('passport');
+const passport = require('../passport.js');
 
 // let authenticationMiddleware = () => {
 //   return (req, res, next) => {
@@ -14,7 +14,6 @@ const passport = require('passport');
 //     res.redirect('/login');
 //   };
 // };
-
 // Home
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../', 'public', 'index.html'));
@@ -33,7 +32,8 @@ router.get('/api/comments', Comments.get);
 router.post('/api/comments', Comments.post);
 
 // Login/Logout
-router.post('/api/login', Login.post);
+router.post('/api/signup', Login.signup);
+router.post('/api/login', passport.authenticate('local-login'), Login.login);
 router.get('/api/logout', Logout.get);
 
 module.exports = router;
