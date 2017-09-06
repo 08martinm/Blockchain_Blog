@@ -5,6 +5,7 @@ const Comments = require('./comments.js');
 const Login = require('./login.js');
 const Logout = require('./logout.js');
 const path = require('path');
+const passport = require('passport');
 
 // let authenticationMiddleware = () => {
 //   return (req, res, next) => {

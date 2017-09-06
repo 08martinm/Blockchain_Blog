@@ -2,7 +2,7 @@ const User = require('../db/users.js');
 const passport = require('../passport.js');
 
 module.exports = {
-  post: (req, res) => {
+  post: (req, res, next) => {
     // If login request has all fields to create a new user
     if (
       req.body.email &&
@@ -29,7 +29,6 @@ module.exports = {
           // Create new user
           User.create(userData, (err, user) => {
             if (err) throw err;
-            console.log(user._id);
             // Passport provides login function - passes to serializeUser
             req.login(user._id, (err) => {
               if (err) throw err;
@@ -43,13 +42,17 @@ module.exports = {
       req.body.logemail &&
       req.body.logpassword
     ) {
-      let email = req.body.logemail;
-      let pw = req.body.password;
-      passport.authenticate('local-login', {
+      passport.authenticate('local', {
         failureRedirect: '/login',
-        failureFlash: true,
-        successFlash: 'Welcome!',
-      })(req, email, pw);
+        successRedirect: '/',
+      }, (err, user) => {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/login'); }
+        req.logIn(user, function(err) {
+          if (err) { return next(err); }
+          return res.redirect('/');
+        });
+      })(req, res, next);
     // If login request doesn't have required fields
     } else {
       var err = new Error('All fields required.');

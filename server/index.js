@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
@@ -13,6 +14,7 @@ mongoose.connect('mongodb://localhost/blog');
 let db = mongoose.connection;
 
 let app = express();
+app.use(flash());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(session({
@@ -21,7 +23,7 @@ app.use(session({
   saveUninitialized: false,
   store: new MongoStore({ mongooseConnection: db }),
 }));
-app.use(flash());
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
