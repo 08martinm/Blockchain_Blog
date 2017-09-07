@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles/Post1.scss';
+import styles from './styles/Lesson1.scss';
 import WhitePaper from './components/WhitePaper';
 import Comment from './components/Comment';
 import Nav from './components/Nav';
@@ -7,12 +7,12 @@ import axios from 'axios';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-class Post1 extends Component {
+class Lesson1 extends Component {
   constructor() {
     super();
     this.state = {
       selected: '',
-      posts: [],
+      comments: [],
       showNav: true,
     };
     this.handleClick = this.handleClick.bind(this);
@@ -41,11 +41,10 @@ class Post1 extends Component {
     event.stopPropagation();
     let newId = event.target.id === this.state.selected ? '' : event.target.id;
     this.setState({selected: newId});
-    console.log('axios starting');
-    axios.get('/api/posts?id=' + newId)
-      .then(posts => { 
-        console.log('posts are', posts);
-        this.setState({posts: posts.data}); 
+    axios.get('/api/comments?id=' + newId)
+      .then(comments => { 
+        console.log('comments are', comments);
+        this.setState({comments: comments.data}); 
       })
       .catch(err => { console.log(err); });
   }
@@ -60,7 +59,7 @@ class Post1 extends Component {
         </div>
         <div className={classnames('col-xs-12', 'col-md-6', styles.comments, expandView)}>
           {this.state.selected != '' ?
-            <Comments title={this.state.selected} posts={this.state.posts} /> :
+            <Comments title={this.state.selected} comments={this.state.comments} /> :
             <Instructions />
           }
         </div>
@@ -91,13 +90,13 @@ let Comments = props => (
     <h2 className='text-center'>Comments</h2>
     <h3 className='text-center'>{`${props.title}`}</h3>
     <div className={styles.divider}/>
-    {props.posts.map((val, key) => <Comment key={key} val={val} />)}
+    {props.comments.map((val, key) => <Comment key={key} val={val} />)}
   </div>
 );
 
 Comments.propTypes = {
   title: PropTypes.string.isrequired,
-  posts: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
 };
 
-export default Post1;
+export default Lesson1;

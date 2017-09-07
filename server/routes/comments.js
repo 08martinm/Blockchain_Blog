@@ -3,9 +3,9 @@ const User = require('../db/users.js');
 
 module.exports = {
   get: (req, res) => {
-    Comments.getComments({section_id: req.query.id}, (err, posts) => {
+    Comments.getComments({section_id: req.query.id}, (err, comments) => {
       if (err) throw err;
-      res.json(posts);
+      res.json(comments);
     });
   },
 

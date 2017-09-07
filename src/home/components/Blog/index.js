@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Blog = () => {
   return (
-    <div id='Posts' className={`row ${styles.container}`}>
+    <div id='Comments' className={`row ${styles.container}`}>
       <div className={`${styles.semitransparent} col-lg-4 col-md-6 col-sm-8 col-xs-10 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1`}>
         <h1>Lessons</h1>
         <ul className={styles.list}>

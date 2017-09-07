@@ -45,14 +45,28 @@
 
 .btn {
   display: block;
-  padding: 1em;
   margin: 3em auto 0;
+  padding: 1em;
   width: 7em;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   background-color: lighten(#2e2f30, 20%);
   border: 2px solid darken(#fffffa, 20%);
   border-radius: 5px;
   outline: none;
+}
+
+.forgotpw {
+  margin: 1.5em 0 0;
+}
+
+.forgotlink {
+  color: darken(#fffffa, 50%);
+}
+
+.forgotlink:hover {
+  color: #fffffa;
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import styles from '../styles/Post1.scss';
+import styles from '../styles/Lesson1.scss';
 import PropTypes from 'prop-types';
 import img_1 from '../../../../../../static/bitcoin_whitepaper/transactions.svg';
 import img_2 from '../../../../../../static/bitcoin_whitepaper/timestamp-server.svg';

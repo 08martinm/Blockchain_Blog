@@ -27,7 +27,7 @@ router.put('/api/emails', Emails.verify);
 // Users
 router.get('/api/users', User.get);
 
-// Posts
+// Comments
 router.get('/api/comments', Comments.get);
 router.post('/api/comments', passport.authenticate('local'), Comments.post);
 

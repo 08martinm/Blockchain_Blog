@@ -46,8 +46,8 @@ $screen-md-max: $screen-lg-min;
 
 @media(max-width: $screen-md-min) {
   .comments {
-    border-top: 1px dotted #2e2f30;
     border-radius: 0 0 10px 10px;
+    border-top: 1px dotted #2e2f30;
     height: 40vh;
     left: 1vw;
     padding: 1.5em 3em;
