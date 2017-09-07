@@ -29,11 +29,11 @@ router.get('/api/users', User.get);
 
 // Posts
 router.get('/api/comments', Comments.get);
-router.post('/api/comments', Comments.post);
+router.post('/api/comments', passport.authenticate('local'), Comments.post);
 
 // Login/Logout
 router.post('/api/signup', Login.signup);
-router.post('/api/login', passport.authenticate('local-login'), Login.login);
+router.post('/api/login', passport.authenticate('local'), Login.login);
 router.get('/api/logout', Logout.get);
 
 module.exports = router;

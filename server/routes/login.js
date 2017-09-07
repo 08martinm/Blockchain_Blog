@@ -40,7 +40,7 @@ module.exports = {
     User.findOne({email: req.body.logemail}, (err, user) => {
       req.logIn(user, function(err) {
         if (err) return next(err);
-        return res.redirect('/');
+        return res.json('Signed in');
       });
     });
   },
