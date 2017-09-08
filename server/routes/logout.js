@@ -1,7 +1,7 @@
 module.exports = {
   get: (req, res) => {
-    console.log(req.session.authenticated);
-    if (req.session.authenticated) {
+    console.log(req.isAuthenticated());
+    if (req.isAuthenticated()) {
       req.session.destroy(function() {
         res.clearCookie('connect.sid', {path: '/'});
         req.logout();

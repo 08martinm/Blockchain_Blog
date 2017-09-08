@@ -26,9 +26,13 @@ class App extends Component {
   }
 
   componentWillMount() {
+    let self = this;
     axios.get('/api/loggedin')
-      .then(() => this.setState({loggedin: true})).bind(this)
-      .catch(() => this.setState({loggedin: false})).bind(this);
+      .then(() => {
+        console.log('seetting loggedin to true');
+        self.setState({loggedin: true});
+      })
+      .catch(() => self.setState({loggedin: false}));
   }
 
   render() {
