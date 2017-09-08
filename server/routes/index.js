@@ -34,6 +34,7 @@ router.post('/api/comments', passport.authenticate('local'), Comments.post);
 // Login/Logout
 router.post('/api/signup', Login.signup);
 router.post('/api/login', passport.authenticate('local'), Login.login);
+router.get('/api/loggedin', Login.auth);
 router.get('/api/logout', Logout.get);
 
 module.exports = router;

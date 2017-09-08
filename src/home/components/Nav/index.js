@@ -11,6 +11,9 @@ const Nav = () => {
       <div className={`${styles.container}`}>
         <ul className={styles.ul}>
           {navList.map(item => <NavItem key={item} value={item} />)}
+          <li className={classnames(styles.li)}>
+            <Link to='profile' className={styles.a}>Profile</Link>
+          </li>
         </ul>
         <li className={classnames(styles.li, styles.right)}>
           <Link to='login' className={styles.a}>Login</Link>

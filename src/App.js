@@ -1,22 +1,34 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import Proptypes from 'prop-types';
 import Home from './home';
 import Verify from './pages/verify';
 import Lesson1 from './pages/2017/09/01';
 import Login from './pages/login';
+import Profile from './pages/profile';
 import styles from './App.css';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      loggedin: false,
-    };
-    this.loginout = this.loginout.bind(this);
+    this.state = {loggedin: false};
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.auth = this.auth.bind(this);
   }
 
-  loginout() {
-    this.setState({loggedin: !this.state.loggedin});
+  login() {this.setState({loggedin: true});}
+  logout() {this.setState({loggedin: false});}
+  auth() {
+    console.log('authing it up in herrrrr');
+    return this.state.loggedin;
+  }
+
+  componentWillMount() {
+    axios.get('/api/loggedin')
+      .then(() => this.setState({loggedin: true})).bind(this)
+      .catch(() => this.setState({loggedin: false})).bind(this);
   }
 
   render() {
@@ -28,6 +40,7 @@ class App extends Component {
             <Route path="/verified" component={Verify} />
             <Route path='/lesson_1' component={Lesson1} />
             <Route path='/login' component={Login} />
+            <PrivateRoute path='/profile' component={Profile} auth={this.auth}/>
             <Redirect to='/' />
           </Switch>
         </div>
@@ -35,5 +48,24 @@ class App extends Component {
     );
   }
 }
+
+const PrivateRoute = ({ component: Component, auth: Auth, ...rest }) => (
+  <Route {...rest} render={props => (
+    Auth() ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/login',
+        state: { from: props.location },
+      }}/>
+    )
+  )}/>
+);
+
+PrivateRoute.propTypes = {
+  component: Proptypes.oneOfType([Proptypes.object, Proptypes.func]).isRequired,
+  location: Proptypes.object,
+  auth: Proptypes.func.isRequired,
+};
 
 export default App;

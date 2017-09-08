@@ -7,10 +7,15 @@ module.exports = {
     es6: true,
     node: true
   },
+  parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 6,
     sourceType: 'module',
-    jsx: true
+    ecmaFeatures: {
+      jsx: true,
+      modules: true,
+      experimentalObjectRestSpread: true
+    }
   },
   rules: {
     'comma-dangle': ['error', 'always-multiline'],

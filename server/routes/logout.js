@@ -1,13 +1,14 @@
 module.exports = {
   get: (req, res) => {
-    if (req.isAuthenticated()) {
-      req.logout();
-      req.session.destroy((err) => {
-        if (err) throw err;
-        return res.json('signed out');
+    console.log(req.session.authenticated);
+    if (req.session.authenticated) {
+      req.session.destroy(function() {
+        res.clearCookie('connect.sid', {path: '/'});
+        req.logout();
+        res.json(req.user);
       });
     } else {
-      return res.json('Already signed out');
+      res.json('Already signed out');
     }
   },
 };

@@ -44,4 +44,12 @@ module.exports = {
       });
     });
   },
+
+  auth: (req, res) => {
+    if (req.isAuthenticated()) {
+      res.status(200).json('Logged In');
+    } else {
+      res.status(401).json('Not logged in');
+    }
+  },
 };

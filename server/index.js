@@ -20,16 +20,20 @@ app.use(bodyParser.json());
 app.use(session({
   secret: 'keyboard king',
   resave: true,
+  cookie: { maxAge: 24 * 60 * 60 * 1000 },
   saveUninitialized: false,
-  store: new MongoStore({ mongooseConnection: db }),
+  store: new MongoStore({
+    mongooseConnection: db,
+    clear_interval: 3600,
+  }),
 }));
 app.use(cookieParser());
-app.use(passport.initialize());
-app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated();
   next();
 });
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(__dirname + '/../public'));
 app.use(routes);
 
