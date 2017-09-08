@@ -20,30 +20,30 @@ class App extends Component {
 
   login() {this.setState({loggedin: true});}
   logout() {this.setState({loggedin: false});}
-  auth() {
-    console.log('authing it up in herrrrr');
-    return this.state.loggedin;
-  }
+  auth() {return this.state.loggedin;}
 
+  // Initializes whether user is loggedin
   componentWillMount() {
     let self = this;
     axios.get('/api/loggedin')
-      .then(() => {
-        console.log('seetting loggedin to true');
-        self.setState({loggedin: true});
-      })
+      .then(() => self.setState({loggedin: true}))
       .catch(() => self.setState({loggedin: false}));
   }
 
   render() {
+    let handleAuth = {
+      auth: this.auth,
+      login: this.login,
+      logout: this.logout,
+    };
     return (
       <Router>
         <div className={`container-fluid ${styles.base}`}>
           <Switch>
-            <Route exact path='/' component={Home} />
+            <RouteWithAuth exact path='/' component={Home} handleAuth={handleAuth}/>
             <Route path="/verified" component={Verify} />
-            <Route path='/lesson_1' component={Lesson1} />
-            <Route path='/login' component={Login} />
+            <RouteWithAuth path='/lesson_1' component={Lesson1} handleAuth={handleAuth}/>
+            <RouteWithAuth path='/login' component={Login} handleAuth={handleAuth}/>
             <PrivateRoute path='/profile' component={Profile} auth={this.auth}/>
             <Redirect to='/' />
           </Switch>
@@ -70,6 +70,17 @@ PrivateRoute.propTypes = {
   component: Proptypes.oneOfType([Proptypes.object, Proptypes.func]).isRequired,
   location: Proptypes.object,
   auth: Proptypes.func.isRequired,
+};
+
+const RouteWithAuth = ({component: Component, handleAuth: handleAuth, ...rest}) => (
+  <Route {...rest} render={props => {
+    return <Component handleAuth={handleAuth} {...props}/>;}
+  } />
+);
+
+RouteWithAuth.propTypes = {
+  component: Proptypes.oneOfType([Proptypes.object, Proptypes.func]).isRequired,
+  handleAuth: Proptypes.object.isRequired,
 };
 
 export default App;

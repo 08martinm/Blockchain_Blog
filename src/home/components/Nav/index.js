@@ -4,7 +4,7 @@ import styles from './Nav.css';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-const Nav = () => {
+const Nav = props => {
   const navList = ['Comments', 'Site', 'Author'];
   return (
     <div>
@@ -16,7 +16,10 @@ const Nav = () => {
           </li>
         </ul>
         <li className={classnames(styles.li, styles.right)}>
-          <Link to='login' className={styles.a}>Login</Link>
+          {props.handleAuth.auth() ?
+            <Link to='login' className={styles.a}>Sign Out</Link> :
+            <Link to='login' className={styles.a}>Login</Link>
+          }
         </li>
         <div className={styles['text-container']}>
           <h2 className={styles.title}>Teaching Blockchain</h2>
@@ -24,6 +27,10 @@ const Nav = () => {
       </div>
     </div>
   );
+};
+
+Nav.propTypes = {
+  handleAuth: PropTypes.object.isRequired,
 };
 
 const NavItem = (props) => {

@@ -12,8 +12,12 @@ class Nav extends Component {
   }
 
   signout() {
+    let self = this;
     axios.get('/api/logout')
-      .then(response => console.log(response));
+      .then(response => {
+        console.log(response);
+        self.props.handleAuth.logout();
+      });
   }
 
   render() {
@@ -30,11 +34,11 @@ class Nav extends Component {
           <h2 className={`${styles.title}`}>Teaching Blockchain</h2>
         </div>
         {
-          this.props.signedin ?
-            <Link to='login' className={classnames(styles.back, styles.right)}>Sign In</Link> :
-            <div onClick={this.signout.bind(this)} className={classnames(styles.back, styles.right)}>
+          this.props.handleAuth.auth() ?
+            (<div onClick={this.signout.bind(this)} className={classnames(styles.back, styles.right)}>
               Sign Out
-            </div>
+            </div>) :
+            <Link to='login' className={classnames(styles.back, styles.right)}>Sign In</Link>
         }
       </div>
     );
@@ -43,7 +47,7 @@ class Nav extends Component {
 
 Nav.propTypes = {
   show: PropTypes.bool.isRequired,
-  signedin: PropTypes.bool.isRequired,
+  handleAuth: PropTypes.object.isRequired,
 };
 
 export default Nav;

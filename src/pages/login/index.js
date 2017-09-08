@@ -27,6 +27,7 @@ class Login extends Component {
 
   signup(event) {
     event.preventDefault();
+    let self = this;
     let body = {
       email: this.state.email,
       username: this.state.username,
@@ -34,27 +35,42 @@ class Login extends Component {
       confpassword: this.state.confpassword,
     };
     axios.post('/api/signup', body)
-      .then(response => console.log(response));
+      .then(response => {
+        console.log(response);
+        if (response.status === 200) {
+          self.props.handleAuth.login();
+        }
+      });
   }
 
   login(event) {
     event.preventDefault();
+    let self = this;
     let body = {
       logemail: this.state.logemail,
       logpassword: this.state.logpassword,
     };
     axios.post('/api/login', body)
-      .then(response => console.log(response));
+      .then(response => {
+        console.log(response);
+        if (response.status === 200) {
+          self.props.handleAuth.login();
+        }
+      });
   }
 
   forgot(event) {
     event.preventDefault();
+    let self = this;
     let body = {
       forgotemail: this.state.forgotemail,
       confemail: this.state.confemail,
     };
     axios.post('/api/forgot', body)
-      .then(response => console.log(response));
+      .then(response => {
+        console.log(response);
+        self.props.handleAuth.logout();
+      });
   }
 
   handleChange(evt) {
@@ -85,7 +101,7 @@ class Login extends Component {
 
     return (
       <div className={`row ${styles.background}`}>
-        <Nav show={true} signedin={this.state.signedin} />
+        <Nav show={true} handleAuth={this.props.handleAuth} />
         <div className={`${styles.container} col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4`}>
           <div id='signup' onClick={e => this.changeView(e)} className={`${styles.view}`}>Sign Up</div>
           <div id='login' onClick={e => this.changeView(e)} className={`${styles.view}`}>Login</div>
@@ -97,6 +113,10 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  handleAuth: PropTypes.object.isRequired,
+};
 
 export default Login;
 

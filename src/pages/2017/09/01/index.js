@@ -8,8 +8,8 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 class Lesson1 extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       selected: '',
       comments: [],
@@ -53,7 +53,7 @@ class Lesson1 extends Component {
     let expandView = this.state.showNav ? '' : styles.expand;
     return (
       <div className={`row ${styles.page}`}>
-        <Nav show={this.state.showNav} signedin={false} />
+        <Nav show={this.state.showNav} handleAuth={this.props.handleAuth} />
         <div className={`${styles.whitepaper} col-xs-12 col-md-6`}>
           <WhitePaper onclick={this.handleClick.bind(this)} selected={this.state.selected} />
         </div>
@@ -67,6 +67,10 @@ class Lesson1 extends Component {
     );
   }
 }
+
+Lesson1.propTypes = {
+  handleAuth: PropTypes.object.isRequired,
+};
 
 let Instructions = () => (
   <div>
