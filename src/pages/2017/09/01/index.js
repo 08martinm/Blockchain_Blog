@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles/Lesson1.scss';
 import WhitePaper from './components/WhitePaper';
 import Comment from './components/Comment';
@@ -60,7 +61,7 @@ class Lesson1 extends Component {
         <div className={classnames('col-xs-12', 'col-md-6', styles.comments, expandView)}>
           {this.state.selected != '' ?
             <Comments title={this.state.selected} comments={this.state.comments} /> :
-            <Instructions />
+            <Instructions handleAuth={this.props.handleAuth} />
           }
         </div>
       </div>
@@ -72,7 +73,7 @@ Lesson1.propTypes = {
   handleAuth: PropTypes.object.isRequired,
 };
 
-let Instructions = () => (
+let Instructions = props => (
   <div>
     <h3>Instructions</h3>
     <p>
@@ -84,10 +85,17 @@ let Instructions = () => (
       white paper (don&#39;t worry, it&#39;s not very long). Afterwards, click on the circles
       next to each paragraph to review community-sourced comments.<br/>
       <br/>
-      If you&#39;d like to leave a comment or vote for one, please <a href='/login'>sign in</a>.
     </p>
+    {props.handleAuth.auth() ?
+      <p></p> :
+      <p>If you&#39;d like to leave a comment or vote for one, please <Link to='login'>sign in</Link>.</p>
+    }
   </div>
 );
+
+Instructions.propTypes = {
+  handleAuth: PropTypes.object.isRequired,
+};
 
 let Comments = props => (
   <div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
 const Nav = props => {
-  const navList = ['Comments', 'Site', 'Author'];
+  const navList = ['Lessons', 'Site', 'Author'];
   return (
     <div>
       <div className={`${styles.container}`}>
