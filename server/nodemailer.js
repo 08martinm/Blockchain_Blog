@@ -27,19 +27,14 @@ let mailOptions = (req, hash) => {
 
 // send mail with defined transport object
 let transporterCb = (error, info) => {
-  if (error) {
-    return console.log(error);
-  }
+  if (error) return console.log(error);
   console.log('Message %s sent: %s', info.messageId, info.response);
 };
 
 // verify connection configuration
-transporter.verify(function(error, success) {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log('Server is ready to take our messages');
-  }
+transporter.verify(function(error) {
+  if (error) return console.log(error);
+  console.log('Server is ready to take our messages');
 });
 
 module.exports.transporter = transporter;
