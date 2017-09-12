@@ -5,7 +5,7 @@ const Comments = require('./comments.js');
 const Login = require('./login.js');
 const Logout = require('./logout.js');
 const Forgot = require('./forgot.js');
-const Reset = require('./forgot.js');
+const Reset = require('./reset.js');
 const path = require('path');
 const passport = require('../passport.js');
 
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 // Emails
 router.get('/api/emails', Emails.get);
 router.post('/api/emails', Emails.post);
-router.put('/api/emails', Emails.verify);
+router.get('/api/verify', Emails.verify);
 
 // Users
 router.get('/api/users', User.get);
@@ -39,7 +39,6 @@ router.post('/api/login', passport.authenticate('local'), Login.login);
 router.get('/api/loggedin', Login.auth);
 router.get('/api/logout', Logout.get);
 router.post('/api/forgot', Forgot.post);
-router.get('/api/reset/:token', Reset.get);
 router.post('/api/reset/:token', Reset.post);
 
 module.exports = router;

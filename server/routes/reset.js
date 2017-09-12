@@ -3,19 +3,11 @@ const nodemailer = require('nodemailer');
 const keychain = require('../../keychain.js');
 
 module.exports = {
-  get: (req, res) => {
-    User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now()}}, (err, user) => {
-      if (!user) {
-        return res.json('error: Password reset token is invalid or has expired.');
-      }
-      return res.redirect('/');
-    });
-  },
-
   post: (req, res) => {
+    console.log('req.params.token is', req.params.token);
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
       if (!user) {
-        return res.json('error: Password reset token is invalid or has expired.');
+        return res.status(400).json('error: Password reset token is invalid or has expired.');
       }
 
       user.password = req.body.password;

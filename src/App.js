@@ -5,6 +5,7 @@ import Home from './home';
 import Verify from './pages/verify';
 import Lesson1 from './pages/2017/09/01';
 import Login from './pages/login';
+import Reset from './pages/reset';
 import Profile from './pages/profile';
 import styles from './App.css';
 import axios from 'axios';
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/verified" component={Verify} />
             <RouteWithAuth path='/lesson_1' component={Lesson1} handleAuth={handleAuth}/>
             <RouteWithAuth path='/login' component={Login} handleAuth={handleAuth}/>
+            <Route path='/reset' component={Reset}/>
             <PrivateRoute path='/profile' component={Profile} auth={this.auth}/>
             <Redirect to='/' />
           </Switch>

@@ -7,10 +7,10 @@ module.exports = {
   post: (req, res, next) => {
     crypto.randomBytes(20, function(err, buf) {
       var token = buf.toString('hex');
-      User.findOne({ email: req.body.email }, function(err, user) {
+      console.log('req.body is', req.body);
+      User.findOne({ forgotemail: req.body.email }, function(err, user) {
         if (!user) {
-          req.flash('error', 'No account with that email address exists.');
-          return res.redirect('/forgot');
+          return res.json('error: No account with that email address exists.');
         }
 
         user.resetPasswordToken = token;
@@ -21,7 +21,7 @@ module.exports = {
           let smtpTransport = nodemailer.createTransport(options);
           smtpTransport.sendMail(mailOptions_Reset(req, token), err => {
             if (err) return next(err);
-            res.redirect('/login');
+            res.json('Email sent');
           });
         });
       });
@@ -40,13 +40,13 @@ let options = {
 };
 
 let mailOptions_Reset = (req, token) => {
-  let link = 'http://' + req.get('host') + '/api/forgot/' + token;
+  let link = 'http://' + req.get('host') + '/reset/' + token;
   return({
     from: '"The Blockchain Blog 🔲⛓️" <the.blockchain.blog@gmail.com>', // sender address
     to: '08martinm@gmail.com', // list of receivers
     subject: 'Password Reset', // Subject line
     html: 'Hi,<br><br>We received a notification that you would like to reset your password.<br><br>' + 
-      'Please Click on the link below to verify your email.<br><br>' + 
-      '<a href=' + link + '>Click here to verify.</a>', // html body
+      'Please click on the link below to reset your password.<br><br>' + 
+      '<a href=' + link + '>Click here to reset your password.</a>', // html body
   });
 };

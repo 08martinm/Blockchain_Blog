@@ -5,6 +5,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const flash = require('connect-flash');
+const history = require('connect-history-api-fallback');
 const passport = require('./passport.js');
 const routes = require('./routes/index.js');
 const port = process.env.PORT || 5000;
@@ -14,6 +15,7 @@ mongoose.connect('mongodb://localhost/blog');
 let db = mongoose.connection;
 
 let app = express();
+app.use(history({verbose: true}));
 app.use(flash());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
