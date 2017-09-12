@@ -4,13 +4,13 @@ const keychain = require('../../keychain.js');
 
 module.exports = {
   post: (req, res) => {
-    console.log('req.params.token is', req.params.token);
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
       if (!user) {
         return res.status(400).json('error: Password reset token is invalid or has expired.');
       }
 
       user.password = req.body.password;
+      console.log('password is', user.password);
       user.resetPasswordToken = undefined;
       user.resetPasswordExpires = undefined;
 

@@ -8,8 +8,8 @@ class Reset extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
-      confpassword: '',
+      resetpassword: '',
+      resetconfpassword: '',
       showErr: false,
       showSuccess: false,
       showSpinner: false,
@@ -20,10 +20,10 @@ class Reset extends Component {
 
   reset(event) {
     event.preventDefault();
-    this.setState({showSpinner: true});
+    this.setState({showSpinner: true, showSuccess: false, showErr: false});
     let body = {
-      password: this.state.password,
-      confpassword: this.state.confpassword,
+      password: this.state.resetpassword,
+      confpassword: this.state.resetconfpassword,
     };
     axios.post('/api/reset/' + this.props.location.pathname.split('/')[2], body)
       .then(() => this.setState({showSuccess: true, showErr: false, showSpinner: false}))
@@ -31,7 +31,6 @@ class Reset extends Component {
   }
 
   handleChange(evt) {
-    console.log(this.state[evt.target.id]);
     let newState = {};
     newState[evt.target.id] = evt.target.value;
     this.setState(newState);
@@ -61,12 +60,16 @@ Reset.propTypes = {
 export default Reset;
 
 const ResetPw = props => (
-  <form className={styles.forms} onSubmit={props.handleSubmit}>
-    <h5 className='text-center'>Password</h5>
-    <input id='password' onChange={props.handleChange} value={props.vals.password} type='password' className={styles.input} placeholder='Password' />
-    <h5 className='text-center'>Confirm Password</h5>
-    <input id='confpassword' onChange={props.handleChange} value={props.vals.confpassword} type='password' className={styles.input} placeholder='Password (must match)' />
-    <button className={styles.btn} type='submit'>Submit</button>
+  <form className={`text-center ${styles.forms}`} onSubmit={props.handleSubmit}>
+    <div className='form-group'>
+      <label htmlFor='resetpassword'>Password</label>
+      <input id='resetpassword' onChange={props.handleChange} value={props.vals.password} type='password' className='form-control' placeholder='Password' />
+    </div>
+    <div className='form-group'>
+      <label htmlFor='resetpassword center-block'>Confirm Password</label>
+      <input id='resetconfpassword' onChange={props.handleChange} value={props.vals.confpassword} type='password' className='form-control' placeholder='Password (must match)' />
+    </div>
+    <button className={`btn btn-lg btn-primary center-block ${styles.newbtn}`} type='submit'>Submit</button>
   </form>
 );
 
@@ -77,19 +80,19 @@ ResetPw.propTypes = {
 };
 
 const ErrMsg = () => (
-  <div className='text-center'>
-    Password reset attempt failed. You may only submit this form from the link provided to you by email.
-    If that link is not working, please get a new password reset email from the Forgot Password section of the 
-    <Link to='/login' > login page</Link>.
+  <div className='text-center alert alert-danger'>
+    Password reset failed.<br />
+    You must use the link sent to your email address to reset your password.<br />
+    If still not working, try getting a new link from <Link className='alert-link' to='/login' >Forgot Password</Link>.
   </div>
 );
 
 const SuccessMsg = () => (
-  <div className='text-center'>
-    Password successfully reset! Please sign in from the <Link to='/' >login page</Link>.
+  <div className='text-center alert alert-success'>
+    Password successfully reset! Please sign in from the <Link className='alert-link' to='/login' >login page</Link>.
   </div>
 );
 
 const Spinner = () => (
-  <div className='text-center'>FAKE SPINNER!!!</div>
+  <i className='fa fa-spinner fa-spin'></i>
 );
