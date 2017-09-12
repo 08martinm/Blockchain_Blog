@@ -2,7 +2,7 @@ const User = require('../db/users.js');
 // const passport = require('../index.js');
 
 module.exports = {
-  signup: (req, res) => {
+  signup: (req, res, next) => {
     if (req.body.password != req.body.confpassword) {
       return res.json('Passwords do not match');
     }
@@ -15,10 +15,10 @@ module.exports = {
     ) {
       User.find({username: req.body.username}, (err, data) => {
         if (err) throw err;
-        if (data.length != 0) return res.status(400).json('Username taken');
+        if (data.length != 0) return res.status(401).json('That username has already been taken!');
         User.find({email: req.body.email}, (err, data) => {
           if (err) throw err;
-          if (data.length != 0) return res.status(400).json('Email taken');
+          if (data.length != 0) return res.status(401).json('We already have that email on file!');
           User.create(req.body, (err, user) => {
             if (err) throw err;
             req.login(user._id, (err) => {
@@ -30,9 +30,7 @@ module.exports = {
       });
 
     } else {
-      var err = new Error('All fields required.');
-      err.status = 400;
-      return res.json('All fields required');
+      return res.status(401).json('All fields required');
     }
   },
 
@@ -49,7 +47,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       res.status(200).json('Logged In');
     } else {
-      res.status(401).json('Not logged in');
+      res.status(401).json('Incorrect username or password!');
     }
   },
 };

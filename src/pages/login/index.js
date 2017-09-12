@@ -66,13 +66,13 @@ class Login extends Component {
       })
 
       .catch(err => {
-        console.log(err);
+        let error = JSON.parse(JSON.stringify(err));
         this.setState(
           {
             showErr: true,
             showSuccess: false,
             showSpinner: false,
-            errMsg: err,
+            errMsg: error.response.data,
           }
         );
       });
@@ -109,14 +109,13 @@ class Login extends Component {
         );
       })
 
-      .catch(err => {
-        console.log(err);
+      .catch(() => {
         this.setState(
           {
             showErr: true,
             showSuccess: false,
             showSpinner: false,
-            errMsg: err,
+            errMsg: 'Invalid username or password!',
           }
         );
       });
@@ -154,13 +153,13 @@ class Login extends Component {
       })
 
       .catch(err => {
-        console.log(err);
+        let error = JSON.parse(JSON.stringify(err));
         this.setState(
           {
             showErr: true,
             showSuccess: false,
             showSpinner: false,
-            errMsg: err,
+            errMsg: error.response.data,
           }
         );
       });
@@ -174,7 +173,16 @@ class Login extends Component {
 
   changeView(event) {
     event.preventDefault();
-    this.setState({view: event.target.id});
+    this.setState(
+      {
+        view: event.target.id,
+        errMsg: '',
+        succMsg: '',
+        showErr: false,
+        showSuccess: false,
+        showSpinner: false,
+      }
+    );
   }
 
   render() {
@@ -232,7 +240,7 @@ class Login extends Component {
             {showView}
             {this.state.showErr ? <div className='alert alert-danger'>{this.state.errMsg}</div> : ''}
             {this.state.showSuccess ? <div className='alert alert-success'>{this.state.succMsg}</div> : ''}
-            {this.state.showSpinner ?  <div className='block-center'><i className='fa fa-cog fa-spin fa-3x fa-fw'></i></div> : ''}
+            {this.state.showSpinner ?  <div className='text-center'><i className='fa fa-cog fa-spin fa-3x fa-fw'></i></div> : ''}
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/blog');
 let db = mongoose.connection;
 
 let app = express();
-app.use(history({verbose: true}));
+app.use(history());
 app.use(flash());
 app.use(morgan('dev'));
 app.use(bodyParser.json());

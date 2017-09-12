@@ -8,7 +8,7 @@ module.exports = {
     crypto.randomBytes(20, function(err, buf) {
       var token = buf.toString('hex');
       console.log('req.body is', req.body);
-      User.findOne({ forgotemail: req.body.email }, function(err, user) {
+      User.findOne({ email: req.body.forgotemail }, function(err, user) {
         if (!user) {
           return res.status(401).json('We do not have that email in our files.');
         }
