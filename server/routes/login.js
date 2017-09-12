@@ -15,15 +15,15 @@ module.exports = {
     ) {
       User.find({username: req.body.username}, (err, data) => {
         if (err) throw err;
-        if (data.length != 0) return res.json('Username taken');
+        if (data.length != 0) return res.status(400).json('Username taken');
         User.find({email: req.body.email}, (err, data) => {
           if (err) throw err;
-          if (data.length != 0) return res.json('Email taken');
+          if (data.length != 0) return res.status(400).json('Email taken');
           User.create(req.body, (err, user) => {
             if (err) throw err;
             req.login(user._id, (err) => {
               if (err) throw err;
-              return res.json('Profile created');
+              return res.status(200).json('Profile created!');
             });
           });
         });

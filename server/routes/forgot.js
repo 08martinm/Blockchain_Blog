@@ -10,7 +10,7 @@ module.exports = {
       console.log('req.body is', req.body);
       User.findOne({ forgotemail: req.body.email }, function(err, user) {
         if (!user) {
-          return res.json('error: No account with that email address exists.');
+          return res.status(401).json('We do not have that email in our files.');
         }
 
         user.resetPasswordToken = token;
@@ -21,7 +21,7 @@ module.exports = {
           let smtpTransport = nodemailer.createTransport(options);
           smtpTransport.sendMail(mailOptions_Reset(req, token), err => {
             if (err) return next(err);
-            res.json('Email sent');
+            res.status(200).json('Open the link in the email we just sent you to reset your password.');
           });
         });
       });

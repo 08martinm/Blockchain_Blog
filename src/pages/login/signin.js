@@ -5,25 +5,25 @@ import PropTypes from 'prop-types';
 const SignIn = props => (
   <form className={styles.forms} onSubmit={evt => props.handleSubmit(evt)}>
     <div className='form-group'>
-      <label htmlFor='email'>Email address</label>
+      <label htmlFor='logemail'>Email address</label>
       <input
         id='logemail'
         type='email'
         onChange={props.handleChange}
-        value={props.vals.email}
-        className='form-control' aria
-        describedby='email'
+        value={props.vals.logemail}
+        className='form-control'
+        aria-describedby='logemail'
         placeholder='Enter email'
       />
     </div>
 
     <div className='form-group'>
-      <label htmlFor='password'>Password</label>
+      <label htmlFor='logpassword'>Password</label>
       <input
         id='logpassword'
         type='password'
         onChange={props.handleChange}
-        value={props.vals.password}
+        value={props.vals.logpassword}
         className='form-control'
         placeholder='Password'
       />
@@ -37,7 +37,7 @@ const SignIn = props => (
     <button
       className={`btn btn-lg btn-primary center-block ${styles.newbtn}`}
       type='submit'>
-      Login
+      Sign In
     </button>
   </form>
 );

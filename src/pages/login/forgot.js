@@ -5,27 +5,27 @@ import PropTypes from 'prop-types';
 const Forgot = props => (
   <form className={styles.forms} onSubmit={evt => props.handleSubmit(evt)}>
     <div className='form-group'>
-      <label htmlFor='email'>Email address</label>
+      <label htmlFor='forgotemail'>Email address</label>
       <input
         id='forgotemail'
         type='email'
         onChange={props.handleChange}
-        value={props.vals.email}
-        className='form-control' aria
-        describedby='email'
+        value={props.vals.forgotemail}
+        className='form-control'
+        aria-describedby='forgotemail'
         placeholder='Enter email'
       />
     </div>
 
     <div className='form-group'>
-      <label htmlFor='password'>Confirm Email Address</label>
+      <label htmlFor='confemail'>Confirm Email Address</label>
       <input
         id='confemail'
         type='email'
         onChange={props.handleChange}
-        value={props.vals.email}
-        className='form-control' aria
-        describedby='email'
+        value={props.vals.confemail}
+        className='form-control'
+        aria-describedby='confemail'
         placeholder='Re-enter email'
       />
       <small id='logpasswordHelp' className='form-text text-muted'>

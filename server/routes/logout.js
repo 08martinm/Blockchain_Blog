@@ -5,10 +5,10 @@ module.exports = {
       req.session.destroy(function() {
         res.clearCookie('connect.sid', {path: '/'});
         req.logout();
-        res.json(req.user);
+        res.status(200).json('Successfully logged out.');
       });
     } else {
-      res.json('Already signed out');
+      res.status(401).json('Already signed out.');
     }
   },
 };
