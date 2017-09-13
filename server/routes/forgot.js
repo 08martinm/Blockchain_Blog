@@ -2,9 +2,23 @@ const crypto = require('crypto');
 const User = require('../db/users.js');
 const nodemailer = require('nodemailer');
 const keychain = require('../../keychain.js');
+const expressValidator = require('express-validator');
 
 module.exports = {
   post: (req, res, next) => {
+
+    req.checkBody('forgotemail', 'Email field cannot be empty.').notEmpty();
+    req.checkBody('forgotemail', 'The email you entered is invalid, please try again.').isEmail();
+    req.checkBody('confemail', 'Confirm Email does not match Email, please try again.').equals(req.body.forgotemail);
+
+    const errors = req.validationErrors();
+
+    if (errors) {
+      console.log(`errors: ${JSON.stringify(errors)}`);
+      let msg = errors.reduce((arr, val) => arr = arr.concat(val.msg), []);
+      return res.status(401).json(msg);
+    }
+
     crypto.randomBytes(20, function(err, buf) {
       var token = buf.toString('hex');
       console.log('req.body is', req.body);

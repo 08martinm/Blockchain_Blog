@@ -1,9 +1,23 @@
 const User = require('../db/users.js');
 const nodemailer = require('nodemailer');
 const keychain = require('../../keychain.js');
+const expressValidator = require('express-validator');
 
 module.exports = {
   post: (req, res) => {
+
+    req.checkBody('password', 'Password must be between 6-100 characters long.').len(6, 100);
+    req.checkBody('password', 'Password must include one lowercase character and one uppercase character.').matches(/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/, 'i');
+    req.checkBody('confpassword', 'Confirm Password does not match Password, please try again.').equals(req.body.password);
+
+    const errors = req.validationErrors();
+
+    if (errors) {
+      console.log(`errors: ${JSON.stringify(errors)}`);
+      let msg = errors.reduce((arr, val) => arr = arr.concat(val.msg), []);
+      return res.status(401).json(msg);
+    }
+
     User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
       if (!user) {
         return res.status(400).json('error: Password reset token is invalid or has expired.');

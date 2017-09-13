@@ -33,6 +33,10 @@ const SignUp = props => (
       />
       <small id='usernameHelp' className='form-text text-muted'>
         This will be your public handle ... choose wisely!
+        <ul>
+          <li>Between 4 and 15 characters.</li>
+          <li>May only contain letters, numbers, or underscores.</li>
+        </ul>
       </small>
     </div>
 
@@ -47,11 +51,10 @@ const SignUp = props => (
         placeholder='Password'
       />
       <small id='passwordHelp' className='form-text text-muted'>
-        Requirements:
+        As always, make it strong!
         <ul>
-          <li>Greater than 6 characters.</li>
-          <li>At least one capital letter.</li>
-          <li>At least one lowercase letter.</li>
+          <li>Between 6 and 100 characters.</li>
+          <li>At least one uppercase and lowercase letter.</li>
         </ul>
       </small>
     </div>
@@ -66,6 +69,9 @@ const SignUp = props => (
         className='form-control'
         placeholder='Confirm Password'
       />
+      <small id='confpasswordHelp' className='form-text text-muted'>
+        Make it match.
+      </small>
     </div>
     
     <button

@@ -13,6 +13,7 @@ class Reset extends Component {
       showErr: false,
       showSuccess: false,
       showSpinner: false,
+      errMsg: '',
     };
     this.reset = this.reset.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -26,8 +27,11 @@ class Reset extends Component {
       confpassword: this.state.resetconfpassword,
     };
     axios.post('/api/reset/' + this.props.location.pathname.split('/')[2], body)
-      .then(() => this.setState({showSuccess: true, showErr: false, showSpinner: false}))
-      .catch(() => this.setState({showSuccess: false, showErr: true, showSpinner: false}));
+      .then(() => this.setState({showSuccess: true, showErr: false, showSpinner: false, errMsg: ''}))
+      .catch(err => {
+        let error = JSON.parse(JSON.stringify(err));
+        this.setState({showSuccess: false, showErr: true, showSpinner: false, errMsg: error.response.data});
+      });
   }
 
   handleChange(evt) {
@@ -42,7 +46,19 @@ class Reset extends Component {
         <div className={`${styles.container} col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4`}>
           <div className='col-xs-12'>
             <ResetPw handleSubmit={this.reset} handleChange={this.handleChange} vals={this.state}/>
-            {this.state.showErr ? <ErrMsg /> : ''}
+            {this.state.showErr ? (
+              typeof this.state.errMsg === 'string' ?
+                (<div className='text-center alert alert-danger'>
+                  {this.state.errMsg}
+                </div>) :
+                (
+                  this.state.errMsg.map((val, i) => (
+                    <div key={i} className='text-center alert alert-danger'>
+                      {val}
+                    </div>
+                  ))
+                )
+            ) : ''}
             {this.state.showSuccess ? <SuccessMsg /> : ''}
             {this.state.showSpinner ? <Spinner /> : ''}
           </div>
@@ -79,13 +95,12 @@ ResetPw.propTypes = {
   vals: PropTypes.object.isRequired,
 };
 
-const ErrMsg = () => (
-  <div className='text-center alert alert-danger'>
-    Password reset failed.<br />
-    You must use the link sent to your email address to reset your password.<br />
-    If still not working, try getting a new link from <Link className='alert-link' to='/login' >Forgot Password</Link>.
-  </div>
-);
+// const ErrMsg = () => (
+//   <div className='text-center alert alert-danger'>
+//     You must use the link sent to your email address to reset your password.<br />
+//     If still not working, try getting a new link from <Link className='alert-link' to='/login' >Forgot Password</Link>.
+//   </div>
+// );
 
 const SuccessMsg = () => (
   <div className='text-center alert alert-success'>

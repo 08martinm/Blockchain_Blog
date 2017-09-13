@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const flash = require('connect-flash');
 const history = require('connect-history-api-fallback');
+const expressValidator = require('express-validator');
 const passport = require('./passport.js');
 const routes = require('./routes/index.js');
 const port = process.env.PORT || 5000;
@@ -36,6 +37,7 @@ app.use((req, res, next) => {
 });
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(expressValidator());
 app.use(express.static(__dirname + '/../public'));
 app.use(routes);
 
