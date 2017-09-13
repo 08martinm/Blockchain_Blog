@@ -13,29 +13,35 @@ import axios from 'axios';
 class App extends Component {
   constructor() {
     super();
-    this.state = {loggedin: false};
+    this.state = {loggedin: false, username: null, email: null};
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.auth = this.auth.bind(this);
   }
 
-  login() {this.setState({loggedin: true});}
-  logout() {this.setState({loggedin: false});}
-  auth() {return this.state.loggedin;}
+  login(username, email) {this.setState({loggedin: true, username: username, email: email});}
+  logout() {
+    axios.get('/api/logout')
+      .then(response => {
+        console.log(response);
+        this.setState({loggedin: false, username: null, email: null});
+      });
+  }
 
   // Initializes whether user is loggedin
   componentWillMount() {
     let self = this;
     axios.get('/api/loggedin')
-      .then(() => self.setState({loggedin: true}))
-      .catch(() => self.setState({loggedin: false}));
+      .then(response => self.setState({loggedin: true, username: response.data.username, email: response.data.email}))
+      .catch(() => self.setState({loggedin: false, username: null, email: null}));
   }
 
   render() {
     let handleAuth = {
-      auth: this.auth,
       login: this.login,
       logout: this.logout,
+      email: this.state.email,
+      username: this.state.username,
+      loggedin: this.state.loggedin,
     };
     return (
       <Router>
@@ -46,7 +52,7 @@ class App extends Component {
             <RouteWithAuth path='/lesson_1' component={Lesson1} handleAuth={handleAuth}/>
             <RouteWithAuth path='/login' component={Login} handleAuth={handleAuth}/>
             <Route path='/reset' component={Reset}/>
-            <PrivateRoute path='/profile' component={Profile} auth={this.auth}/>
+            <PrivateRoute path='/profile' component={Profile} auth={this.state.loggedin}/>
             <Redirect to='/' />
           </Switch>
         </div>
@@ -57,7 +63,7 @@ class App extends Component {
 
 const PrivateRoute = ({ component: Component, auth: Auth, ...rest }) => (
   <Route {...rest} render={props => (
-    Auth() ? (
+    Auth ? (
       <Component {...props}/>
     ) : (
       <Redirect to={{
@@ -71,7 +77,7 @@ const PrivateRoute = ({ component: Component, auth: Auth, ...rest }) => (
 PrivateRoute.propTypes = {
   component: Proptypes.oneOfType([Proptypes.object, Proptypes.func]).isRequired,
   location: Proptypes.object,
-  auth: Proptypes.func.isRequired,
+  auth: Proptypes.bool.isRequired,
 };
 
 const RouteWithAuth = ({component: Component, handleAuth: handleAuth, ...rest}) => (

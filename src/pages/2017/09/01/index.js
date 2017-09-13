@@ -86,7 +86,7 @@ let Instructions = props => (
       next to each paragraph to review community-sourced comments.<br/>
       <br/>
     </p>
-    {props.handleAuth.auth() ?
+    {props.handleAuth.loggedin ?
       <p></p> :
       <p>If you&#39;d like to leave a comment or vote for one, please <Link to='login'>sign in</Link>.</p>
     }

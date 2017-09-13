@@ -1,12 +1,7 @@
 .background {
   background: url('../../../static/circles-and-roundabouts.png');
   background-repeat: repeat;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+  min-height: 100vh;
 }
 
 .container {
@@ -77,4 +72,11 @@
 .forgotlink:hover {
   color: #fffffa;
   cursor: pointer;
+}
+
+.logout {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin: 2em;
+  padding: 2em;
 }

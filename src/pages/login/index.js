@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import SignIn from './signin.js';
 import SignUp from './signup.js';
+import Logout from './logout.js';
 import Forgot from './forgot.js';
 
 class Login extends Component {
@@ -56,13 +57,13 @@ class Login extends Component {
     axios.post('/api/signup', body)
       .then(response => {
         console.log(response);
-        this.props.handleAuth.login();
+        this.props.handleAuth.login(response.data.username, response.data.email);
         this.setState(
           {
             showErr: false,
             showSuccess: true,
             showSpinner: false,
-            succMsg: response.data,
+            succMsg: 'Profile created! You are now signed in as ' + response.data.username,
           }
         );
       })
@@ -100,13 +101,13 @@ class Login extends Component {
 
       .then(response => {
         console.log(response);
-        this.props.handleAuth.login();
+        this.props.handleAuth.login(response.data.username, response.data.email);
         this.setState(
           {
             showErr: false,
             showSuccess: true,
             showSpinner: false,
-            succMsg: response.data,
+            succMsg: 'Logged in! You are now signed is as ' + response.data.username,
           }
         );
       })
@@ -247,7 +248,7 @@ class Login extends Component {
             Sign In
           </div>
           <div className='col-xs-12'>
-            {showView}
+            {this.props.handleAuth.loggedin ? <Logout handleAuth={this.props.handleAuth} /> : showView}
             {this.state.showErr ? (
               typeof this.state.errMsg === 'string' ?
                 (<div className='alert alert-danger'>

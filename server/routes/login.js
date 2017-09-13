@@ -30,7 +30,7 @@ module.exports = {
           if (err) throw err;
           req.login(user._id, (err) => {
             if (err) throw err;
-            return res.status(200).json('Profile created!');
+            return res.status(200).json({username: user.username, email: user.email});
           });
         });
       });
@@ -41,14 +41,14 @@ module.exports = {
     User.findOne({email: req.body.logemail}, (err, user) => {
       req.logIn(user, function(err) {
         if (err) return next(err);
-        return res.json('Signed in');
+        return res.json({username: user.username, email: user.email});
       });
     });
   },
 
   auth: (req, res) => {
     if (req.isAuthenticated()) {
-      res.status(200).json('Logged In');
+      res.status(200).json({username: req.user.username, email: req.user.email});
     } else {
       res.status(401).json('Incorrect username or password!');
     }

@@ -16,7 +16,7 @@ const Nav = props => {
           </li>
         </ul>
         <li className={classnames(styles.li, styles.right)}>
-          {props.handleAuth.auth() ?
+          {props.handleAuth.loggedin ?
             <Link to='login' className={styles.a}>Sign Out</Link> :
             <Link to='login' className={styles.a}>Login</Link>
           }
