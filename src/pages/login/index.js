@@ -26,11 +26,13 @@ class Login extends Component {
       showSpinner: false,
       succMsg: '',
       errMsg: '',
+      showCriteria: false,
     };
     this.signup = this.signup.bind(this);
     this.login = this.login.bind(this);
     this.forgot = this.forgot.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleCriteria = this.toggleCriteria.bind(this);
   }
 
   signup(event) {
@@ -185,6 +187,12 @@ class Login extends Component {
     );
   }
 
+  toggleCriteria(evt) {
+    evt.preventDefault();
+    console.log('toggling');
+    this.setState({showCriteria: !this.state.showCriteria});
+  }
+
   render() {
     let showView;
     let highlight1 = '';
@@ -196,6 +204,8 @@ class Login extends Component {
           handleSubmit={this.signup}
           handleChange={this.handleChange}
           vals={this.state}
+          toggleCriteria={this.toggleCriteria}
+          showCriteria={this.state.showCriteria}
         />;
       highlight1 = styles.highlight;
       break;

@@ -5,6 +5,12 @@ import PropTypes from 'prop-types';
 const SignUp = props => (
   <form className={styles.forms} onSubmit={evt => props.handleSubmit(evt)}>
     <div className='form-group'>
+      <p className='text-center'>{props.showCriteria ? 'Hide' : 'Show'} form criteria:</p>
+      <button
+        className={'btn btn-sm btn-primary center-block'}
+        onClick={props.toggleCriteria}>
+        {props.showCriteria ? 'Hide' : 'Show'}
+      </button>
       <label htmlFor='email'>Email address</label>
       <input
         id='email'
@@ -15,10 +21,16 @@ const SignUp = props => (
         aria-describedby='email'
         placeholder='Enter email'
       />
-      <small id='emailHelp' className='form-text text-muted'>
-        We&#39;ll never share your email with anyone else.<br />
-        You&#39;ll use this email to sign-in and recover passwords.
-      </small>
+      {props.showCriteria ? 
+        (<small id='emailHelp' className='form-text text-muted'>
+          We&#39;ll never share your email with anyone else.<br />
+          You&#39;ll use this email to sign-in and recover passwords.
+          <ul>
+            <li>Must be a valid email</li>
+          </ul>
+        </small>) :
+        ''
+      }
     </div>
 
     <div className='form-group'>
@@ -31,13 +43,14 @@ const SignUp = props => (
         className='form-control'
         placeholder='Enter desired username'
       />
-      <small id='usernameHelp' className='form-text text-muted'>
-        This will be your public handle ... choose wisely!
-        <ul>
-          <li>Between 4 and 15 characters.</li>
-          <li>May only contain letters, numbers, or underscores.</li>
-        </ul>
-      </small>
+      {props.showCriteria ? 
+        (<small id='usernameHelp' className='form-text text-muted'>
+          This will be your public handle ... choose wisely!
+          <ul>
+            <li>Between 4 and 15 characters.</li>
+            <li>May only contain letters, numbers, or underscores.</li>
+          </ul>
+        </small>) : ''}
     </div>
 
     <div className='form-group'>
@@ -50,13 +63,14 @@ const SignUp = props => (
         className='form-control'
         placeholder='Password'
       />
-      <small id='passwordHelp' className='form-text text-muted'>
-        As always, make it strong!
-        <ul>
-          <li>Between 6 and 100 characters.</li>
-          <li>At least one uppercase and lowercase letter.</li>
-        </ul>
-      </small>
+      {props.showCriteria ? 
+        (<small id='passwordHelp' className='form-text text-muted'>
+          As always, make it strong!
+          <ul>
+            <li>Between 6 and 100 characters.</li>
+            <li>At least one uppercase and lowercase letter.</li>
+          </ul>
+        </small>) : ''}
     </div>
 
     <div className='form-group'>
@@ -69,9 +83,10 @@ const SignUp = props => (
         className='form-control'
         placeholder='Confirm Password'
       />
-      <small id='confpasswordHelp' className='form-text text-muted'>
-        Make it match.
-      </small>
+      {props.showCriteria ? 
+        (<small id='confpasswordHelp' className='form-text text-muted'>
+          Make it match.
+        </small>) : ''}
     </div>
     
     <button
@@ -86,6 +101,8 @@ SignUp.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   vals: PropTypes.object.isRequired,
+  toggleCriteria: PropTypes.func.isRequired,
+  showCriteria: PropTypes.bool.isRequired,
 };
 
 export default SignUp;
