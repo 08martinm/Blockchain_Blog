@@ -16,7 +16,6 @@ mongoose.connect('mongodb://localhost/blog');
 let db = mongoose.connection;
 
 let app = express();
-app.use(history());
 app.use(flash());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -38,7 +37,8 @@ app.use((req, res, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(expressValidator());
-app.use(express.static(__dirname + '/../public'));
 app.use(routes);
+app.use(history());
+app.use(express.static(__dirname + '/../public'));
 
 app.listen(port,() => console.log('Server on:', port));

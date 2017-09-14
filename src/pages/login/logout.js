@@ -5,12 +5,12 @@ import styles from './login.scss';
 const Logout = props => (
   <div className={`block-center text-center ${styles.logout}`}>
     <p>
-      You are logged in as {props.handleAuth.username}.<br />
+      You are logged in as <b>{props.handleAuth.username}</b>.<br />
       Sign out if you would like to change accounts.
     </p>
     <button
       className={`btn btn-lg btn-primary center-block ${styles.newbtn}`}
-      onClick={props.handleAuth.logout}>
+      onClick={props.logout}>
       Sign Out
     </button>
   </div>
@@ -18,6 +18,7 @@ const Logout = props => (
 
 Logout.propTypes = {
   handleAuth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default Logout;

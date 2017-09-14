@@ -42,12 +42,12 @@ class Lesson1 extends Component {
     event.stopPropagation();
     let newId = event.target.id === this.state.selected ? '' : event.target.id;
     this.setState({selected: newId});
-    axios.get('/api/comments?id=' + newId)
+    axios.get('/api/comments?section_id=' + newId + '&lesson_id=whitepaper_bitcoin')
       .then(comments => { 
         console.log('comments are', comments);
         this.setState({comments: comments.data}); 
       })
-      .catch(err => { console.log(err); });
+      .catch(err => { console.log(JSON.stringify(err)); });
   }
 
   render() {
@@ -102,7 +102,7 @@ let Comments = props => (
     <h2 className='text-center'>Comments</h2>
     <h3 className='text-center'>{`${props.title}`}</h3>
     <div className={styles.divider}/>
-    {props.comments.map((val, key) => <Comment key={key} val={val} />)}
+    {fakeComments.map((post, key) => <Comment key={key} post={post} />)}
   </div>
 );
 
@@ -112,3 +112,24 @@ Comments.propTypes = {
 };
 
 export default Lesson1;
+
+let fakeComments = [
+  {
+    username: '08martinm',
+    lesson_id: 'whitepaper_bitcoin',
+    section_id: 'Title',
+    comment: 'Hi there',
+  },
+  {
+    username: '08martinm',
+    lesson_id: 'whitepaper_bitcoin',
+    section_id: 'Title',
+    comment: 'It will be important to note the historical context surrounding 10/31/2008 throughout this paper. The financial markets had been in turmoil for well over a year by this point. In January of 2008, Bank of America purchased Countrywide Financial for ~$4bn. In March of 2008, the Federal Reserve guaranteed $30bn of Bear Stearns assets under a government-sponsored sale to JPMorgan Chase. In September of 2008, AIG accepts an $85bn federal bailout, Goldman Sachs and Morgan Stanley convert from independent investment banks to bank holding companies, and federal regulators shut down Washington Mutual Bank. On September 29, 2008, congress rejected TARP, a $700bn financial rescue package, causing the Dow Jones to plummet 778 points, its single-worst drop ever. This paper was written at the height of distrust in banks and government institutions and devises an alternative: a purely peer-to-peer payment method that bypasses all 3rd parties.',
+  },
+  {
+    username: '08martinm',
+    lesson_id: 'whitepaper_bitcoin',
+    section_id: 'Title',
+    comment: 'From the title alone, we are able to get to the gist of Bitcoin - a means of providing the benefits of cash transactions online.',
+  },
+];

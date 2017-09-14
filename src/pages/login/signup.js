@@ -26,7 +26,7 @@ const SignUp = props => (
           We&#39;ll never share your email with anyone else.<br />
           You&#39;ll use this email to sign-in and recover passwords.
           <ul>
-            <li>Must be a valid email</li>
+            <li>Must be a valid email.</li>
           </ul>
         </small>) :
         ''

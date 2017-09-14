@@ -31,7 +31,7 @@ router.get('/api/users', User.get);
 
 // Comments
 router.get('/api/comments', Comments.get);
-router.post('/api/comments', passport.authenticate('local'), Comments.post);
+router.post('/api/comments', Comments.post);
 
 // Login/Logout
 router.post('/api/signup', Login.signup);

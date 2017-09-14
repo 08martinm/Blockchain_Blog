@@ -12,7 +12,6 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signedin: false,
       view: 'signup',
       email: '',
       username: '',
@@ -34,6 +33,7 @@ class Login extends Component {
     this.forgot = this.forgot.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.toggleCriteria = this.toggleCriteria.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   signup(event) {
@@ -190,8 +190,30 @@ class Login extends Component {
 
   toggleCriteria(evt) {
     evt.preventDefault();
-    console.log('toggling');
     this.setState({showCriteria: !this.state.showCriteria});
+  }
+
+  logout() {
+    this.props.handleAuth.logout();
+    this.setState(
+      {
+        view: 'login',
+        email: '',
+        username: '',
+        password: '',
+        confpassword: '',
+        logemail: '',
+        logpassword: '',
+        forgotemail: '',
+        confemail: '',
+        showErr: false,
+        showSuccess: false,
+        showSpinner: false,
+        succMsg: '',
+        errMsg: '',
+        showCriteria: false,
+      }
+    );
   }
 
   render() {
@@ -248,7 +270,10 @@ class Login extends Component {
             Sign In
           </div>
           <div className='col-xs-12'>
-            {this.props.handleAuth.loggedin ? <Logout handleAuth={this.props.handleAuth} /> : showView}
+            {this.props.handleAuth.loggedin ? 
+              <Logout logout={this.logout} handleAuth={this.props.handleAuth} /> :
+              showView
+            }
             {this.state.showErr ? (
               typeof this.state.errMsg === 'string' ?
                 (<div className='alert alert-danger'>
