@@ -28,8 +28,8 @@ body {
 * Comments
 =======================*/
 .comments-container {
-  margin: 60px auto 15px;
-  width: 768px;
+  margin: 2em 0 1em;
+  width: 100%;
 }
 
 .comments-container h1 {
@@ -44,7 +44,6 @@ body {
 }
 
 .comments-list {
-  margin-top: 30px;
   position: relative;
 }
 
@@ -55,7 +54,7 @@ body {
   background: #c7cacb;
   content: '';
   height: 100%;
-  left: 32px;
+  left: 2px;
   position: absolute;
   top: 0;
   width: 2px;
@@ -68,7 +67,7 @@ body {
   bottom: 0;
   content: '';
   height: 7px;
-  left: 27px;
+  left: 0;
   position: absolute;
   width: 7px;
 }
@@ -82,10 +81,10 @@ body {
   background: #c7cacb;
   content: '';
   height: 2px;
-  left: -55px;
+  left: -48px;
   position: absolute;
-  top: 25px;
-  width: 60px;
+  top: 17px;
+  width: 25px;
 }
 
 
@@ -106,7 +105,7 @@ body {
 .reply-list {
   clear: both;
   margin-top: 15px;
-  padding-left: 88px;
+  padding-left: 50px;
 }
 /**
 * Avatar
@@ -116,10 +115,10 @@ body {
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   float: left;
-  height: 65px;
+  height: 50px;
   overflow: hidden;
   position: relative;
-  width: 65px;
+  width: 50px;
   z-index: 99;
 }
 
@@ -147,7 +146,7 @@ body {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   float: right;
   position: relative;
-  width: 680px;
+  width: calc(100% - 15px);
 }
 
 .comments-list .comment-box::before,
@@ -171,7 +170,7 @@ body {
 }
 
 .reply-list .comment-box {
-  width: 610px;
+  width: 100%;
 }
 
 .comment-box .comment-head {
@@ -179,14 +178,14 @@ body {
   border-bottom: 1px solid #e5e5e5;
   border-radius: 4px 4px 0 0;
   overflow: hidden;
-  padding: 10px 12px;
+  padding: 4px 15px;
 }
 
 .comment-box .comment-head i {
   color: #a6a6a6;
   cursor: pointer;
   float: right;
-  margin-left: 14px;
+  margin: 4px 0 0 14px;
   position: relative;
   top: 2px;
   transition: color 0.3s ease;

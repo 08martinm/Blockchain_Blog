@@ -55,7 +55,7 @@ class Lesson1 extends Component {
     return (
       <div className={`row ${styles.page}`}>
         <Nav show={this.state.showNav} handleAuth={this.props.handleAuth} />
-        <div className={`${styles.whitepaper} col-xs-12 col-md-6`}>
+        <div className={`${styles.whitepaper} ${styles.scroll} col-xs-12 col-md-6`}>
           <WhitePaper onclick={this.handleClick.bind(this)} selected={this.state.selected} />
         </div>
         <div className={classnames('col-xs-12', 'col-md-6', styles.comments, expandView)}>

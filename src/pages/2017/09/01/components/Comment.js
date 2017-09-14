@@ -20,16 +20,17 @@ import styles from '../styles/comments.scss';
 // };
 
 // export default Comment;
+//<div className={styles['comment-avatar']}><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg' alt='' /></div>
 
 const Comment2 = props => (
   <div>
-    <div className={styles['comment-avatar']}><img src='http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg' alt='' /></div>
     <div className={styles['comment-box']}>
       <div className={styles['comment-head']}>
         <h6 className={`${styles['comment-name']} ${styles['by-author']}`}><a href='http://creaticode.com/blog'>{props.post.username}</a></h6>
-        <span>hace 20 minutos</span>
-        <i className='fa fa-reply'></i>
+        <span>{props.post.create_date}</span>
+        {props.level === 1 && <i className='fa fa-reply'></i>}
         <i className='fa fa-heart'></i>
+        <i>{props.post.likes}</i>
       </div>
       <div className={styles['comment-content']}>
         {props.post.comment}
@@ -40,6 +41,7 @@ const Comment2 = props => (
 
 Comment2.propTypes = {
   post: PropTypes.object.isRequired,
+  level: PropTypes.number.isRequired,
 };
 
 export default Comment2;
