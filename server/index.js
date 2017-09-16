@@ -37,8 +37,8 @@ app.use((req, res, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(expressValidator());
-app.use(routes);
 app.use(history());
+app.use(routes);
 app.use(express.static(__dirname + '/../public'));
 
 app.listen(port,() => console.log('Server on:', port));
