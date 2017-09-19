@@ -23,7 +23,9 @@ const Comment = props => {
         <div className={styles['comment-content']}>
           {!props.post.addPost ? 
             props.post.comment :
-            /*FOR DEVELOPMENT props.handleAuth.loggedin*/ props ? <AddPost /> : <div>To post a comment, please <Link to='/login'>sign in</Link>.</div>
+            props.handleAuth.loggedin ? 
+              <AddPost submitPost={props.submitPost} parent_id={props.post.parent_id}/> :
+              <div>To post a comment, please <Link to='/login'>sign in</Link>.</div>
           }
         </div>
       </div>
@@ -35,6 +37,7 @@ Comment.propTypes = {
   post: PropTypes.object.isRequired,
   level: PropTypes.number.isRequired,
   handleAuth: PropTypes.object.isRequired,
+  submitPost: PropTypes.func.isRequired,
 };
 
 export default Comment;

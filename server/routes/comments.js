@@ -18,9 +18,11 @@ module.exports = {
       comment: req.body.comment,
     };
 
-    Comments.create(newPost, (err, post) => {
+    console.log('newPost is', newPost);
+
+    Comments.create(newPost, (err) => {
       if (err) throw err;
-      return res.status(200).json(post);
+      return res.status(200).json('Success!');
     });
   },
 };

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 let CommentsSchema = new mongoose.Schema({
   username: {
     type: String,
-    unique: true,
     required: true,
   },
   lesson_id: {
@@ -25,6 +24,14 @@ let CommentsSchema = new mongoose.Schema({
   create_date: {
     type: Date,
     default: Date.now,
+  },
+  likes: {
+    type: Number,
+    default: 0,
+  },
+  children: {
+    type: Array,
+    default: [],
   },
 });
 
