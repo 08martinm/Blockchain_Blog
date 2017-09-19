@@ -14,17 +14,18 @@ const Comment = props => {
     <div>
       <div className={`${styles['comment-box']} ${styles[post]}`}>
         <div className={`${styles['comment-head']} ${styles[post]}`}>
-          <h6 className={`${styles['comment-name']} ${styles[flair]}`}><a href='http://creaticode.com/blog'>{props.post.username}</a></h6>
+          <h6 className={`${styles['comment-name']} ${styles[flair]}`}><a>{props.post.username}</a></h6>
           <span>{props.post.create_date}</span>
-          {!props.post.addPost && props.level === 1 && <i className='fa fa-reply'></i>}
-          <i className='fa fa-heart'></i>
-          <i>{props.post.likes}</i>
+          {!props.post.addPost && props.level === 1 && <i onClick={() => props.addPost(props.post._id)} className='fa fa-reply'></i>}
+          {!props.post.addPost && <i className='fa fa-heart'></i>}
+          {!props.post.addPost && <i>{props.post.likes}</i>}
+          {props.post.addPost && <div className='text-center'>Add your own comment</div>}
         </div>
         <div className={styles['comment-content']}>
           {!props.post.addPost ? 
             props.post.comment :
             props.handleAuth.loggedin ? 
-              <AddPost submitPost={props.submitPost} parent_id={props.post.parent_id}/> :
+              <AddPost submitPost={props.submitPost} level={props.level} parent_id={props.post.parent_id} cancelPost={props.cancelPost}/> :
               <div>To post a comment, please <Link to='/login'>sign in</Link>.</div>
           }
         </div>
@@ -34,6 +35,8 @@ const Comment = props => {
 };
 
 Comment.propTypes = {
+  cancelPost: PropTypes.func.isRequired,
+  addPost: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   level: PropTypes.number.isRequired,
   handleAuth: PropTypes.object.isRequired,

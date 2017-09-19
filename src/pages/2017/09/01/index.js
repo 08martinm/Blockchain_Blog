@@ -20,6 +20,8 @@ class Lesson1 extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.submitPost = this.submitPost.bind(this);
+    this.addPost = this.addPost.bind(this);
+    this.cancelPost = this.cancelPost.bind(this);
   }
 
   handleScroll(){
@@ -53,6 +55,25 @@ class Lesson1 extends Component {
     axios.post('/api/comments', data)
       .then(() => this.handleClick({target: {id: this.state.selected}}, 'fromSubmit'))
       .catch(err => console.log(JSON.stringify(err)));
+  }
+
+  addPost(id) {
+    let comments = this.state.comments.slice();
+    let clickedComment = comments.find(comment => comment._id === id);
+    let hasInputAlready = clickedComment.children.find(comment => comment.addPost) + 1;
+
+    if (!hasInputAlready) {
+      clickedComment.children.push({likes: 0, addPost: true, parent_id: id, children: []});
+      this.setState({comments: comments});
+    }
+  }
+
+  cancelPost(evt, id) {
+    evt.preventDefault();
+    let comments = this.state.comments.slice();
+    let clickedComment = comments.find(comment => comment._id === id);
+    clickedComment.children.splice(clickedComment.children.find(comment => comment.addPost), 1);
+    this.setState({comments: comments});
   }
 
   handleClick(event, override) {
@@ -94,7 +115,7 @@ class Lesson1 extends Component {
     } else if (this.state.isLoading) {
       showView = <i className={`${styles.loading} text-center fa-spin fa fa-cog`} aria-hidden='true'></i>;
     } else {
-      showView = <Comments title={this.state.selected} submitPost={this.submitPost} handleAuth={this.props.handleAuth} comments={/*fakeComments*/this.state.comments}/>;
+      showView = <Comments title={this.state.selected} submitPost={this.submitPost} handleAuth={this.props.handleAuth} comments={this.state.comments} addPost={this.addPost} cancelPost={this.cancelPost}/>;
     }
 
     return (

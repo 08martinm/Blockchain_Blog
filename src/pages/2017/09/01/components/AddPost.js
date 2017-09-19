@@ -23,7 +23,7 @@ class AddPost extends Component {
         <textarea id='comment' onChange={this.handleChange} className='form-control' rows='4'></textarea>
         <div className={`text-center ${styles.btncontainer}`}>
           <button className='btn btn-primary' type='submit'>Post Comment</button>
-          <button className='btn btn-warning' type='submit'>Cancel</button>
+          {this.props.level != 1 && <button className='btn btn-warning' onClick={evt => this.props.cancelPost(evt, this.props.parent_id)}>Cancel</button>}
         </div>
       </form>
     );
@@ -31,6 +31,8 @@ class AddPost extends Component {
 }
 
 AddPost.propTypes = {
+  cancelPost: PropTypes.func.isRequired,
+  level: PropTypes.number.isRequired,
   submitPost: PropTypes.func.isRequired,
   parent_id: PropTypes.string,
 };
