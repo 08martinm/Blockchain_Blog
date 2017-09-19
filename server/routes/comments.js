@@ -15,6 +15,7 @@ module.exports = {
       username: req.user.username,
       lesson_id: req.body.lesson_id,
       section_id: req.body.section_id,
+      parent_id: req.body.parent_id,
       comment: req.body.comment,
     };
 

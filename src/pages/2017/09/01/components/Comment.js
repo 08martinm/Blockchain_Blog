@@ -25,8 +25,13 @@ const Comment = props => {
           {!props.post.addPost ? 
             props.post.comment :
             props.handleAuth.loggedin ? 
-              <AddPost submitPost={props.submitPost} level={props.level} parent_id={props.post.parent_id} cancelPost={props.cancelPost}/> :
-              <div>To post a comment, please <Link to='/login'>sign in</Link>.</div>
+              <AddPost submitPost={props.submitPost} level={props.level} post={props.post} cancelPost={props.cancelPost}/> :
+              (<div>
+                <div>To post a comment, please <Link to='/login'>sign in</Link>.</div>
+                <div className='text-center'>
+                  {props.level != 1 && <button className='btn btn-warning' onClick={evt => props.cancelPost(evt, props.post.parent_id)}>Cancel</button>}
+                </div>
+              </div>)
           }
         </div>
       </div>

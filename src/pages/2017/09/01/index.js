@@ -61,9 +61,8 @@ class Lesson1 extends Component {
     let comments = this.state.comments.slice();
     let clickedComment = comments.find(comment => comment._id === id);
     let hasInputAlready = clickedComment.children.find(comment => comment.addPost) + 1;
-
     if (!hasInputAlready) {
-      clickedComment.children.push({likes: 0, addPost: true, parent_id: id, children: []});
+      clickedComment.children.push({likes: 0, addPost: true, parent_id: clickedComment._id, children: []});
       this.setState({comments: comments});
     }
   }
@@ -72,7 +71,7 @@ class Lesson1 extends Component {
     evt.preventDefault();
     let comments = this.state.comments.slice();
     let clickedComment = comments.find(comment => comment._id === id);
-    clickedComment.children.splice(clickedComment.children.find(comment => comment.addPost), 1);
+    clickedComment.children.splice(clickedComment.children.findIndex(comment => comment.addPost), 1);
     this.setState({comments: comments});
   }
 
@@ -81,7 +80,11 @@ class Lesson1 extends Component {
       this.setState({isLoading: false, selected: '', comments: []});
     } else {
       let self = this;
-      this.setState({isLoading: true, selected: event.target.id, comments: []});
+      if (override == 'fromSubmit') {
+        this.setState({isLoading: true, comments: []});
+      } else {
+        this.setState({isLoading: true, selected: event.target.id, comments: []});
+      }
       axios.get('/api/comments?section_id=' + event.target.id + '&lesson_id=whitepaper_bitcoin')
         .then(comments => { 
           let sortedComments = [];
@@ -89,8 +92,7 @@ class Lesson1 extends Component {
             if (!val.parent_id) {
               sortedComments.push(val);
             } else {
-              let parent = sortedComments.find(curr => curr.parent_id === val.parent_id);
-              console.log('parent is', parent);
+              let parent = sortedComments.find(curr => curr._id.toString() === val.parent_id.toString());
               if (!parent.children) parent.children = [];
               parent.children.push(val);
             }
