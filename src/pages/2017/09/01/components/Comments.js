@@ -11,15 +11,16 @@ const Comments = props => (
     <div className={styles1.divider}/>
     <div className={styles['comments-container']}>
       <ul id={styles['comments-list']} className={styles['comments-list']}>
-        <CommentsContainer posts={props.comments} level={1} />
+        <CommentsContainer posts={props.comments} level={1} handleAuth={props.handleAuth} />
       </ul>
     </div>
   </div>
 );
 
 Comments.propTypes = {
-  title: PropTypes.string.isRequired,
   comments: PropTypes.array.isRequired,
+  handleAuth: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Comments;
@@ -31,12 +32,12 @@ const CommentsContainer = props => (
         <div key={post._id}>
           <li>
             <div className={styles['comment-main-level']}>
-              <Comment post={post} level={props.level} />
+              <Comment post={post} level={props.level} handleAuth={props.handleAuth}/>
             </div>
           </li>
           {post.children.length > 0 && (
             <ul className={`${styles['comments-list']} ${styles['reply-list']}`}>
-              <CommentsContainer posts={post.children} level={2} />
+              <CommentsContainer posts={post.children} level={2} handleAuth={props.handleAuth}/>
             </ul>
           )}
         </div>
@@ -46,6 +47,7 @@ const CommentsContainer = props => (
 );
 
 CommentsContainer.propTypes = {
-  posts: PropTypes.array.isRequired,
+  handleAuth: PropTypes.object.isRequired,
   level: PropTypes.number.isRequired,
+  posts: PropTypes.array.isRequired,
 };

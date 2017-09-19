@@ -75,7 +75,7 @@ class Lesson1 extends Component {
     } else if (this.state.isLoading) {
       showView = <i className={`${styles.loading} text-center fa-spin fa fa-cog`} aria-hidden='true'></i>;
     } else {
-      showView = <Comments title={this.state.selected} comments={fakeComments/*this.state.comments*/} />;
+      showView = <Comments title={this.state.selected} handleAuth={this.props.handleAuth} comments={fakeComments/*this.state.comments*/}/>;
     }
 
     return (
@@ -160,5 +160,16 @@ let fakeComments = [
         children: [],
       },
     ],
+  },
+  {
+    _id: null,
+    username: null,
+    lesson_id: 'whitepaper_bitcoin',
+    section_id: 'Title',
+    parent_id: null,
+    addPost: true,
+    comment: null,
+    likes: 0,
+    children: [],
   },
 ];

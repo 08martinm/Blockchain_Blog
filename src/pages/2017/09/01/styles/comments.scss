@@ -163,8 +163,13 @@ body {
   width: 0;
 }
 
+.comments-list .comment-box.post::before,
+.comments-list .comment-box.post::after {
+  border-color: transparent #03658c;
+}
+
 .comments-list .comment-box::before {
-  border-color: transparent rgba(0, 0, 0, 0.05);
+  border-color: transparent rgba(0, 0, 0, 0.1);
   border-width: 11px 13px 11px 0;
   left: -12px;
 }
@@ -179,6 +184,11 @@ body {
   border-radius: 4px 4px 0 0;
   overflow: hidden;
   padding: 4px 15px;
+}
+
+.comment-box .comment-head.post {
+  background-color: #03658c;
+  color: #fff;
 }
 
 .comment-box .comment-head i {
@@ -224,8 +234,8 @@ body {
   padding: 12px;
 }
 
-.comment-box .comment-name.by-author,
-.comment-box .comment-name.by-author a {
+.comment-box .comment-name,
+.comment-box .comment-name a {
   color: #03658c;
 }
 
@@ -233,12 +243,24 @@ body {
   background: #03658c;
   border-radius: 3px;
   color: #fff;
-  content: 'autor';
+  content: 'Site Creator';
   font-size: 12px;
   font-weight: 700;
   margin-left: 10px;
   padding: 3px 5px;
 }
+
+.comment-box .comment-name.you::after {
+  background: #00b700;
+  border-radius: 3px;
+  color: #fff;
+  content: 'You';
+  font-size: 12px;
+  font-weight: 700;
+  margin-left: 10px;
+  padding: 3px 5px;
+}
+
 
 /** =====================
 * Responsive
