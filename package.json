@@ -9,6 +9,8 @@
     "lint:js": "eslint app/ webpack.*.js --cache"
   },
   "devDependencies": {
+  },
+  "dependencies": {
     "autoprefixer": "^7.1.2",
     "axios": "^0.16.2",
     "babel-core": "^6.25.0",
@@ -35,7 +37,9 @@
     "express-validator": "^4.1.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
+    "font-awesome": "^4.7.0",
     "html-webpack-plugin": "^2.29.0",
+    "moment": "^2.18.1",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.8",
     "morgan": "^1.8.2",
@@ -63,9 +67,5 @@
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.5.0",
     "webpack-merge": "^4.1.0"
-  },
-  "dependencies": {
-    "font-awesome": "^4.7.0",
-    "moment": "^2.18.1"
   }
 }
