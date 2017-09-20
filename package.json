@@ -70,11 +70,11 @@
   "description": "Teaching Blockchain",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/08martinm/Blockchain_Blog.git"
+    "url": "git+https://github.com/08martinm/Teaching-Blockchain.git"
   },
   "author": "Matthew Martin",
   "bugs": {
-    "url": "https://github.com/08martinm/Blockchain_Blog/issues"
+    "url": "https://github.com/08martinm/Teaching-Blockchain/issues"
   },
-  "homepage": "https://github.com/08martinm/Blockchain_Blog#readme"
+  "homepage": "https://github.com/08martinm/Teaching-Blockchain#readme"
 }
