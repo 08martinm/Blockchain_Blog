@@ -18,29 +18,25 @@ class Lesson1 extends Component {
       isLoading: false,
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
     this.submitPost = this.submitPost.bind(this);
     this.addPost = this.addPost.bind(this);
     this.cancelPost = this.cancelPost.bind(this);
+    this.deletePost = this.deletePost.bind(this);
+    this.editPost = this.editPost.bind(this);
+    this.editLikes = this.editLikes.bind(this);
   }
 
-  handleScroll(){
-    let {showNav} = this.state;
-
-    window.scrollY > this.prev ?
-      showNav && this.setState({showNav: false}) :
-      !showNav && this.setState({showNav: true});
-
-    this.prev = window.scrollY;
+  deletePost(post) {
+    axios.delete('/api/comments/' + post._id)
+      .then(() => this.handleClick({target: {id: this.state.selected}}, 'fromSubmit'))
+      .catch(err => console.log(JSON.stringify(err)));
   }
 
-  componentDidMount(){
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount(){
-    window.removeEventListener('scroll', this.handleScroll);
-  }
+  editPost(comment) {
+    axios.put('/api/comments', comment)
+      .then(() => this.handleClick({target: {id: this.state.selected}}, 'fromSubmit'))
+      .catch(err => console.log(JSON.stringify(err)));
+  }  
 
   submitPost(evt, form) {
     evt.preventDefault();
@@ -73,6 +69,12 @@ class Lesson1 extends Component {
     let clickedComment = comments.find(comment => comment._id === id);
     clickedComment.children.splice(clickedComment.children.findIndex(comment => comment.addPost), 1);
     this.setState({comments: comments});
+  }
+
+  editLikes(id) {
+    axios.put('/api/likes', {id: id})
+      .then(() => this.handleClick({target: {id: this.state.selected}}, 'fromSubmit'))
+      .catch(err => console.log(JSON.stringify(err)));
   }
 
   handleClick(event, override) {
@@ -117,7 +119,7 @@ class Lesson1 extends Component {
     } else if (this.state.isLoading) {
       showView = <i className={`${styles.loading} text-center fa-spin fa fa-cog`} aria-hidden='true'></i>;
     } else {
-      showView = <Comments title={this.state.selected} submitPost={this.submitPost} handleAuth={this.props.handleAuth} comments={this.state.comments} addPost={this.addPost} cancelPost={this.cancelPost}/>;
+      showView = <Comments title={this.state.selected} submitPost={this.submitPost} handleAuth={this.props.handleAuth} comments={this.state.comments} addPost={this.addPost} cancelPost={this.cancelPost} deletePost={this.deletePost} editPost={this.editPost} editLikes={this.editLikes}/>;
     }
 
     return (
@@ -216,3 +218,4 @@ export default Lesson1;
 //     children: [],
 //   },
 // ];
+

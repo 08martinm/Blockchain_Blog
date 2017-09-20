@@ -191,14 +191,18 @@ body {
   color: #fff;
 }
 
-.comment-box .comment-head i {
+.comment-box .comment-head i,
+.comment-box .comment-head b {
   color: #a6a6a6;
-  cursor: pointer;
   float: right;
   margin: 4px 0 0 14px;
   position: relative;
   top: 2px;
   transition: color 0.3s ease;
+}
+
+.comment-box .comment-head i {
+  cursor: pointer;
 }
 
 .comment-box .comment-head i:hover {

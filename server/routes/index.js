@@ -32,6 +32,10 @@ router.get('/api/users', User.get);
 // Comments
 router.get('/api/comments', Comments.get);
 router.post('/api/comments', Comments.post);
+router.put('/api/comments', Comments.put);
+router.put('/api/likes', Comments.likes);
+
+router.delete('/api/comments/:id', Comments.delete);
 
 // Login/Logout
 router.post('/api/signup', Login.signup);
