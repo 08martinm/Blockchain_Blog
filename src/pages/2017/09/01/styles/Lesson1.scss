@@ -34,10 +34,8 @@ $screen-md-max: $screen-lg-min;
   .comments {
     border-left: 1px dotted #2e2f30;
     border-radius: 0 10px 10px 0;
-    height: 92vh;
-    left: 52vw;
-    padding: 3em;  
-    top: 4em;
+    height: 100vh;
+    padding: 3em 0 0;  
     transition: height 0.3s, top 0.3s;
     width: 47vw;
   }

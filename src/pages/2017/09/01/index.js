@@ -14,6 +14,7 @@ class Lesson1 extends Component {
     this.state = {
       selected: '',
       comments: [],
+      lesson_id: 'whitepaper_bitcoin',
       showNav: true,
       isLoading: false,
     };
@@ -42,8 +43,8 @@ class Lesson1 extends Component {
     evt.preventDefault();
 
     let data = {
-      lesson_id: this.state.comments[0]['lesson_id'],
-      section_id: this.state.comments[0]['section_id'],
+      lesson_id: this.state.lesson_id,
+      section_id: this.state.selected,
       parent_id: form.parent_id,
       comment: form.comment,
     };

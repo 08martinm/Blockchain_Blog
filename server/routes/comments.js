@@ -19,6 +19,8 @@ module.exports = {
       comment: req.body.comment,
     };
 
+    console.log('newPost is', newPost);
+
     Comments.create(newPost, (err) => {
       if (err) throw err;
       return res.status(200).json('Success!');
