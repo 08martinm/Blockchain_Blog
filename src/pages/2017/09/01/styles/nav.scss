@@ -1,10 +1,9 @@
 .nav {
-  background-color: rgba(#2e2f30, 0);
+  background-color: #2e2f30;
   color: #fffffa;
   display: flex;
   position: fixed;
   text-align: center;
-  top: -3em;
   transition: top 0.3s, background-color 0.5s;
   z-index: 1;
 }
