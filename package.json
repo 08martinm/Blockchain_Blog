@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server/index.js",
-    "postinstall": "npm run build",
+    "postinstall": "npm install && run build",
     "build": "webpack -p",
     "start:dev": "webpack-dev-server",
     "lint:js": "eslint app/ webpack.*.js --cache"
