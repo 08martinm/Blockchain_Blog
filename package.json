@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack && nodemon server/index.js",
+    "start": "node server/index.js",
     "postinstall": "npm start",
     "start:dev": "webpack-dev-server",
     "lint:js": "eslint app/ webpack.*.js --cache"
