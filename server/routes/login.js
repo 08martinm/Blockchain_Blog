@@ -28,7 +28,7 @@ module.exports = {
         if (data.length != 0) return res.status(401).json('We already have that email on file!');
         User.create(req.body, (err, user) => {
           if (err) throw err;
-          req.login(user._id, (err) => {
+          req.login(user, (err) => {
             if (err) throw err;
             return res.status(200).json({username: user.username, email: user.email});
           });

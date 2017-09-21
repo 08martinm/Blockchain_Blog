@@ -1,14 +1,16 @@
 {
-  "name": "new_setup_can_delete",
+  "name": "teaching-blockchain",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack -p && nodemon server/index.js",
+    "start": "webpack && node server/index.js",
     "start:dev": "webpack-dev-server",
+    "start:serv": "webpack -p && node server/index.js",
     "lint:js": "eslint app/ webpack.*.js --cache"
   },
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "autoprefixer": "^7.1.2",
     "axios": "^0.16.2",
     "babel-core": "^6.25.0",
@@ -35,7 +37,9 @@
     "express-validator": "^4.1.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
+    "font-awesome": "^4.7.0",
     "html-webpack-plugin": "^2.29.0",
+    "moment": "^2.18.1",
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.8",
     "morgan": "^1.8.2",
@@ -64,8 +68,14 @@
     "webpack-dev-server": "^2.5.0",
     "webpack-merge": "^4.1.0"
   },
-  "dependencies": {
-    "font-awesome": "^4.7.0",
-    "moment": "^2.18.1"
-  }
+  "description": "Teaching Blockchain",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/08martinm/Teaching-Blockchain.git"
+  },
+  "author": "Matthew Martin",
+  "bugs": {
+    "url": "https://github.com/08martinm/Teaching-Blockchain/issues"
+  },
+  "homepage": "https://github.com/08martinm/Teaching-Blockchain#readme"
 }

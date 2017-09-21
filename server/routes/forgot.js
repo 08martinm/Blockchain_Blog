@@ -1,7 +1,6 @@
 const crypto = require('crypto');
 const User = require('../db/users.js');
 const nodemailer = require('nodemailer');
-const keychain = require('../../keychain.js');
 const expressValidator = require('express-validator');
 
 module.exports = {
@@ -49,7 +48,7 @@ let options = {
   secure: true, // secure:true for port 465, secure:false for port 587
   auth: {
     user: 'the.blockchain.blog@gmail.com',
-    pass: keychain.smtp,
+    pass: process.env.NODEMAILER_PW,
   },
 };
 

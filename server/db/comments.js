@@ -35,5 +35,6 @@ let CommentsSchema = new mongoose.Schema({
   },
 });
 
-let Comments = mongoose.model('Comments', CommentsSchema);
+let Comments = mongoose.model('Comments', CommentsSchema, 'comments');
+
 module.exports = Comments;
