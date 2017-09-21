@@ -4,8 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack -p && nodemon server/index.js",
+    "start": "webpack && node server/index.js",
     "start:dev": "webpack-dev-server",
+    "start:serv": "webpack -p && node server/index.js",
     "lint:js": "eslint app/ webpack.*.js --cache"
   },
   "devDependencies": {},
