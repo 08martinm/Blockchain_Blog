@@ -1,5 +1,4 @@
 const nodemailer = require('nodemailer');
-const keychain = require('../keychain.js');
 
 let transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -7,7 +6,7 @@ let transporter = nodemailer.createTransport({
   secure: true, // secure:true for port 465, secure:false for port 587
   auth: {
     user: 'the.blockchain.blog@gmail.com',
-    pass: keychain.smtp,
+    pass: process.env.NODEMAILER_PW,
   },
 });
 
