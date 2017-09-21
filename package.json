@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack && node server/index.js",
     "start:dev": "webpack-dev-server",
-    "start:serv": "webpack -p && node server/index.js",
+    "start:serv": "webpack -p && nodemon server/index.js",
     "lint:js": "eslint app/ webpack.*.js --cache"
   },
   "devDependencies": {},

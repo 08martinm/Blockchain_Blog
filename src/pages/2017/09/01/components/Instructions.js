@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/Lesson1.scss';
 import { Link } from 'react-router-dom';
 
 const Instructions = props => (
-  <div>
+  <div className={styles.comments}>
     <h3>Instructions</h3>
     <p>
       <br/>

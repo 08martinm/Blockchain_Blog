@@ -5,7 +5,6 @@ import Comments from './components/Comments';
 import Instructions from './components/Instructions';
 import Nav from './components/Nav';
 import axios from 'axios';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 class Lesson1 extends Component {
@@ -106,14 +105,11 @@ class Lesson1 extends Component {
         })
         .catch(err => { 
           console.log('err in bitcoin_whitepaper index', JSON.stringify(err));
-          // /*FOR DEVELOPMENT*/this.setState({isLoading: false, comments: fakeComments});
         });
     }
   }
 
   render() {
-    let expandView = this.state.showNav ? '' : styles.expand;
-
     let showView;
     if (this.state.selected === '') {
       showView = <Instructions handleAuth={this.props.handleAuth} />;
@@ -126,10 +122,10 @@ class Lesson1 extends Component {
     return (
       <div className={`row ${styles.page}`}>
         <Nav show={this.state.showNav} handleAuth={this.props.handleAuth} />
-        <div className={`${styles.whitepaper} col-xs-12 col-md-6`}>
+        <div className={`${styles.whitepaper}`}>
           <WhitePaper onclick={this.handleClick.bind(this)} selected={this.state.selected} />
         </div>
-        <div className={classnames('col-xs-12', 'col-md-6', styles.comments, expandView)}>
+        <div>
           {showView}
         </div>
       </div>
@@ -142,81 +138,3 @@ Lesson1.propTypes = {
 };
 
 export default Lesson1;
-
-// let fakeComments = [
-//   {
-//     _id: '59b9b4542094a424f0231412341b0c84',
-//     username: '08martinm',
-//     lesson_id: 'whitepaper_bitcoin',
-//     section_id: 'Title',
-//     parent_id: null,
-//     comment: 'Hi there',
-//     likes: 7,
-//   },
-// ];
-//       {
-//         _id: '59b9b4542094a424f012134123b04443',
-//         username: '08mm',
-//         lesson_id: 'whitepaper_bitcoin',
-//         section_id: 'Title',
-//         parent_id: '59b9b4542094a424f01b0c84',
-//         comment: 'It will be important to note the historical context surrounding 10/31/2008 throughout this paper. The financial markets had been in turmoil for well over a year by this point. In January of 2008, Bank of America purchased Countrywide Financial for ~$4bn. In March of 2008, the Federal Reserve guaranteed $30bn of Bear Stearns assets under a government-sponsored sale to JPMorgan Chase. In September of 2008, AIG accepts an $85bn federal bailout, Goldman Sachs and Morgan Stanley convert from independent investment banks to bank holding companies, and federal regulators shut down Washington Mutual Bank. On September 29, 2008, congress rejected TARP, a $700bn financial rescue package, causing the Dow Jones to plummet 778 points, its single-worst drop ever. This paper was written at the height of distrust in banks and government institutions and devises an alternative: a purely peer-to-peer payment method that bypasses all 3rd parties.',
-//         likes: 14,
-//         children: [],
-//       },
-//       {
-//         _id: '59b9b4542094a424f04321341234114',
-//         username: 'Someon Else',
-//         lesson_id: 'whitepaper_bitcoin',
-//         section_id: 'Title',
-//         parent_id: '59b9b4542094a424f01b0c84',
-//         comment: 'Valid point, but I have something to tack on: blah, blah, blah',
-//         likes: 231,
-//         children: [],
-//       },
-//       {
-//         _id: '59b9b4542094a424f01b044423421433',
-//         username: 'Rando1',
-//         lesson_id: 'whitepaper_bitcoin',
-//         section_id: 'Title',
-//         parent_id: '59b9b4542094a424f0434114',
-//         comment: 'Well, I beg to differ! You see: blah, blah, blah',
-//         likes: 1,
-//         children: [],
-//       },  
-//     ],
-//   },
-//   {
-//     _id: '59b9b4542094a42123412344f0434114',
-//     username: 'Whos this',
-//     lesson_id: 'whitepaper_bitcoin',
-//     section_id: 'Title',
-//     parent_id: null,
-//     comment: 'This is a new comment - should appear on top-level',
-//     likes: 0,
-//     children: [
-//       {
-//         _id: '59b9b4542094a424f01b044213452',
-//         username: 'Rando2',
-//         lesson_id: 'whitepaper_bitcoin',
-//         section_id: 'Title',
-//         parent_id: '59b9b4542094a424f0434114',
-//         comment: 'Youre a genius! A genius I tell you!',
-//         likes: 2,
-//         children: [],
-//       },
-//     ],
-//   },
-//   {
-//     _id: null,
-//     username: null,
-//     lesson_id: 'whitepaper_bitcoin',
-//     section_id: 'Title',
-//     parent_id: null,
-//     addPost: true,
-//     comment: null,
-//     likes: 0,
-//     children: [],
-//   },
-// ];
-

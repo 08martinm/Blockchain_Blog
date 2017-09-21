@@ -12,12 +12,6 @@ const routes = require('./routes/index.js');
 const port = process.env.PORT || 5000;
 
 const MongoStore = require('connect-mongo')(session);
-// const options = {
-//   useMongoClient: true,
-//   keepAlive: true,
-//   socketTimeoutMS: 10000,
-//   reconnectTries: 31,
-// };
 mongoose.Promise = global.Promise;
 let connection = mongoose.connect(process.env.MONGOLAB_URI);
 let db = mongoose.connection;

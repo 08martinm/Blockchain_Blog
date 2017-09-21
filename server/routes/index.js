@@ -9,13 +9,6 @@ const Reset = require('./reset.js');
 const path = require('path');
 const passport = require('../passport.js');
 
-// let authenticationMiddleware = () => {
-//   return (req, res, next) => {
-//     console.log( `req.session.user: ${JSON.stringify(req.session.passport)}`);
-//     if (req.isAuthenticated()) return next();
-//     res.redirect('/login');
-//   };
-// };
 // Home
 router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../', 'public', 'index.html'));

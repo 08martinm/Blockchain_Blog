@@ -5,10 +5,10 @@
 }
 
 .whitepaper {
-  height: calc(100vh - 3em);
-  margin-top: 3em;
+  height: calc(97vh - 3em);
   overflow-x: hidden;
   overflow-y: scroll;
+  padding-top: 3em;
   width: 52vw;
 }
 
@@ -36,18 +36,18 @@ $screen-md-max: $screen-lg-min;
     border-radius: 0 10px 10px 0;
     height: calc(100vh - 3em);
     left: 52vw;
-    margin-top: 3em;
     padding: 1em 3em 3em;
     transition: height 0.3s, top 0.3s;
+    top: 3em;
     width: 48vw;
   }
 
   .expand {
-    height: 100vh;
-    left: 52vw;
+    height: calc(100vh - 3em);
     top: 1vh;
     transition: height 0.3s 0.3s, top 0.3s 0.3s;
-    width: 46vw;
+    top: 3em;
+    width: 52vw;
   }
 }
 
@@ -58,14 +58,12 @@ $screen-md-max: $screen-lg-min;
     height: 40vh;
     overflow-x: scroll;
     padding: 0.5em 3em;
-    top: 59vh;
+    top: 60vh;
     width: 100vw;
   }
 
   .whitepaper {
-    height: calc(59vh - 3em);
-    margin-top: 3em;
-    padding: 0;
+    height: 60vh;
     width: 100vw;
   }
 }
