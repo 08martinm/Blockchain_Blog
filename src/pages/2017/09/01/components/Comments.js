@@ -5,7 +5,7 @@ import styles1 from '../styles/Lesson1.scss';
 import Comment from './Comment.js';
 
 const Comments = props => (
-  <div>
+  <div className={styles1.comments}>
     <h2 className='text-center'>Comments</h2>
     <h3 className='text-center'>{`${props.title}`}</h3>
     <div className={styles1.divider}/>

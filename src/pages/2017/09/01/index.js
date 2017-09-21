@@ -114,7 +114,7 @@ class Lesson1 extends Component {
     if (this.state.selected === '') {
       showView = <Instructions handleAuth={this.props.handleAuth} />;
     } else if (this.state.isLoading) {
-      showView = <i className={`${styles.loading} text-center fa-spin fa fa-cog`} aria-hidden='true'></i>;
+      showView = <div className={`${styles.comments}`}><i className={`${styles.loading} text-center fa-spin fa fa-cog`} aria-hidden='true'></i></div>;
     } else {
       showView = <Comments title={this.state.selected} submitPost={this.submitPost} handleAuth={this.props.handleAuth} comments={this.state.comments} addPost={this.addPost} cancelPost={this.cancelPost} deletePost={this.deletePost} editPost={this.editPost} editLikes={this.editLikes}/>;
     }
