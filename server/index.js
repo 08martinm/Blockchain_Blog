@@ -48,7 +48,7 @@ db.on('open', () => {
   app.use(history());
   app.use(routes);
   app.use(express.static(__dirname + '/../public'));
-  app.listen(port, () => console.log('Server on:', port));
+  app.listen(process.env.PORT || port || 5000, () => console.log('Server on:', port));
 });
 
 module.exports = connection;
