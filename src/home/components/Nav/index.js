@@ -43,7 +43,3 @@ NavItem.propTypes = {
 };
 
 export default Nav;
-
-{/* <li className={classnames(styles.li)}>
-  <Link to='profile' className={styles.a}>Profile</Link>
-</li> */}
