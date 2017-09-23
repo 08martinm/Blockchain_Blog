@@ -57,7 +57,7 @@ class Background extends Component {
           <h1>What is this site about?</h1>
           <div className={`${styles.text}`}>
             <p>
-              This site was built for the purpose of achieivng two goals:<br/>
+              This site aims to achieve two goals:<br/>
               <br/>
               <ol>
                 <li>Teach users about blockchain: how it works, what it does, and why we should care.</li>
