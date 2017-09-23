@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './styles/background.css';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Background extends Component {
   constructor(props) {
@@ -56,17 +57,21 @@ class Background extends Component {
           <h1>What is this site about?</h1>
           <div className={`${styles.text}`}>
             <p>
-              These are my scribblings about blockchain. 
-              What it is, what it can do, and why we should care.
-              While I hope to cover many facets of this technology,
-              my goal is to provide an in-depth look from a developer&#39;s
-              perspective. Over time, I intend to host live demos and cultivate
-              reader feedback, so that you can participate in this site&#39;s
-              creation and direction.
-              <br /><br />
-              Meanwhile, if you would like to be alerted when I publish
-              new features, feel free to send me your email. I promise to
-              respect your privacy and only notify you of substantive updates.
+              This site was built for the purpose of achieivng two goals:<br/>
+              <br/>
+              <ol>
+                <li>Teach users about blockchain: how it works, what it does, and why we should care.</li>
+                <li>Form an online community dedicated to achieving Goal #1.</li>
+              </ol>
+              <br/>
+              In the spirit of the first goal, I will be working to provide amazing content that triggers
+              lightbulb moments for all of you. However, I do have something to ask in return: <Link to='/login'>create an account</Link>,
+              comment on <a href='#Lessons'>lessons</a>, and let your voice be heard. The second goal ultimately plays a much more significant
+              role in making this site a value-add to our blockchain education.<br/>
+              <br/>
+              You&#39;re currently visiting this site in its infancy. For now, I suggest you
+              take a look at the <Link to='/lesson_1'>Bitcoin Whitepaper provided in Lesson 1</Link>.
+              If you&#39;d like to be alerted when I publish new lessons, feel free to sign up below.
             </p>
           </div>
           <div className={`${styles.center} `}>
