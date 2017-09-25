@@ -80,3 +80,7 @@ button:active {
   padding: 1em 3em;
   text-align: left;
 }
+
+.alert {
+  margin: 1em 0 0;
+}

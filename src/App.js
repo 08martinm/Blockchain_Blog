@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   // Initializes whether user is loggedin
-  componentWillMount() {
+  componentDidMount() {
     let self = this;
     axios.get('/api/loggedin')
       .then(response => self.setState({loggedin: true, username: response.data.username, email: response.data.email}))
@@ -48,7 +48,7 @@ class App extends Component {
         <div className={`container-fluid ${styles.base}`}>
           <Switch>
             <RouteWithAuth exact path='/' component={Home} handleAuth={handleAuth}/>
-            <Route path="/verified" component={Verify} />
+            <RouteWithAuth path="/verify" component={Verify} handleAuth={handleAuth}/>
             <RouteWithAuth path='/lesson_1' component={Lesson1} handleAuth={handleAuth}/>
             <RouteWithAuth path='/login' component={Login} handleAuth={handleAuth}/>
             <Route path='/reset' component={Reset}/>

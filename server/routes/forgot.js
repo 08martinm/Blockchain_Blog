@@ -47,7 +47,7 @@ let options = {
   port: 465,
   secure: true, // secure:true for port 465, secure:false for port 587
   auth: {
-    user: 'the.blockchain.blog@gmail.com',
+    user: 'teachingblockchain@gmail.com',
     pass: process.env.NODEMAILER_PW,
   },
 };
@@ -55,8 +55,8 @@ let options = {
 let mailOptions_Reset = (req, token) => {
   let link = 'http://' + req.get('host') + '/reset/' + token;
   return({
-    from: '"The Blockchain Blog 🔲⛓️" <the.blockchain.blog@gmail.com>', // sender address
-    to: '08martinm@gmail.com', // list of receivers
+    from: '"Teaching Blockchain 🔲⛓️" <teachingblockchain@gmail.com>', // sender address
+    to: req.body.forgotemail, // list of receivers
     subject: 'Password Reset', // Subject line
     html: 'Hi,<br><br>We received a notification that you would like to reset your password.<br><br>' + 
       'Please click on the link below to reset your password.<br><br>' + 

@@ -24,7 +24,4 @@ let EmailSchema = new mongoose.Schema({
 
 let Email = mongoose.model('Email', EmailSchema);
 
-module.exports.Email = Email;
-module.exports.getEmails = (cb, limit) => Email.find(cb).limit(limit);
-module.exports.addEmail = (data, cb) => Email.create(data, cb);
-module.exports.findHash = (val, update, cb) => Email.findOneAndUpdate({hash: val}, update, cb);
+module.exports = Email;

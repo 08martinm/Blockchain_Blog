@@ -47,14 +47,14 @@ let options = {
   port: 465,
   secure: true, // secure:true for port 465, secure:false for port 587
   auth: {
-    user: 'the.blockchain.blog@gmail.com',
+    user: 'teachingblockchain@gmail.com',
     pass: process.env.NODEMAILER_PW,
   },
 };
 
 let mailOptions_Confirm = user => ({
-  from: '"The Blockchain Blog 🔲⛓️" <the.blockchain.blog@gmail.com>', // sender address
-  to: '08martinm@gmail.com', // list of receivers
+  from: '"Teaching Blockchain 🔲⛓️" <teachingblockchain@gmail.com>', // sender address
+  to: user.email, // list of receivers
   subject: 'Your Password Has Been Reset', // Subject line
   html: 'Hi,<br><br>This is a confirmation that the password for your account ' + user.email + ' has just been changed.<br><br>',
 });

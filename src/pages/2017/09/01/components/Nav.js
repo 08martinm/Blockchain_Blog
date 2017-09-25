@@ -5,9 +5,8 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 const Nav = props => {
-  let showNav = props.show ? styles.shownav : '';
   return (
-    <div className={classnames(styles.nav, 'col-xs-12', showNav)}>
+    <div className={classnames(styles.nav, 'col-xs-12', styles.shownav)}>
       <div className={styles.container}>
         <Link to='/' className={`${styles.back}`}>
           <i className={`${styles.arrow} fa fa-angle-double-left`} aria-hidden='true'></i>
@@ -29,7 +28,6 @@ const Nav = props => {
 };
 
 Nav.propTypes = {
-  show: PropTypes.bool.isRequired,
   handleAuth: PropTypes.object.isRequired,
 };
 

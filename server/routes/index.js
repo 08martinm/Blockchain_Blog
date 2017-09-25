@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
 });
 
 // Emails
-router.get('/api/emails', Emails.get);
 router.post('/api/emails', Emails.post);
 router.get('/api/verify', Emails.verify);
 

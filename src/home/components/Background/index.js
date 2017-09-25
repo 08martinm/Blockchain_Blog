@@ -12,6 +12,7 @@ class Background extends Component {
       formValue: '',
       inputClass: 'unfocused',
       show: false,
+      error: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.submitEmail = this.submitEmail.bind(this);
@@ -37,13 +38,12 @@ class Background extends Component {
   }
 
   submitEmail(event) {
+    this.setState({show: false, error: false});
     event.preventDefault();
     if (this.state.validEmail) {
-      axios.post('/api/emails', {
-        email: this.state.formValue,
-      })
-        .then(this.setState({inputClass: 'submitted'}))
-        .then(this.setState({show: true}));
+      axios.post('/api/emails', {email: this.state.formValue})
+        .then(() => this.setState({inputClass: 'submitted', show: true, error: false}))
+        .catch(() => this.setState({inputClass: 'submitted', show: false, error: true}));
     } else {
       this.setState({inputClass: 'error'});
     }
@@ -80,7 +80,8 @@ class Background extends Component {
               <button type='Submit' className={styles[this.state.inputClass]}>Submit</button>
             </form>
           </div>
-          <Instructions show={this.state.show} email={this.state.formValue} />
+          {this.state.error ? <div className={`alert alert-danger ${styles.alert}`}>Hmmm... we already have that email address on file. Do you want to try another one?</div> : ''}
+          {this.state.show ? <div className={`alert alert-success ${styles.alert}`}>Awesome!<br/>One more step: please click on the validation link sent to your email to verify your account.</div> : ''}
         </div>
       </div>
     );
