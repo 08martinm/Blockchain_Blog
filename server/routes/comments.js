@@ -2,10 +2,8 @@ const Comments = require('../db/comments.js');
 
 module.exports = {
   get: (req, res, next) => {
-    console.log('about to run db query');
     Comments.find({'section_id': req.query.section_id, 'lesson_id': req.query.lesson_id}, (err, comments) => {
       if (err) return next(err);
-      console.log('in db query');
       return res.status(200).json(comments);
     });
   },

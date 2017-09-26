@@ -33,7 +33,7 @@ export default Comments;
 
 const CommentsContainer = props => (
   <div>
-    {props.posts.map(post => {
+    {props.posts.length > 0 && props.posts.map(post => {
       return (
         <div key={post._id}>
           <li>

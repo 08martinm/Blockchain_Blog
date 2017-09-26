@@ -56,14 +56,12 @@ class Background extends Component {
         <div className='col-lg-4 col-md-6 col-sm-8 col-xs-10 col-xs-offset-1 col-sm-offset-3 col-md-offset-5 col-lg-offset-7'>
           <h1>What is this site about?</h1>
           <div className={`${styles.text}`}>
+            <p>This site aims to achieve two goals:</p>
+            <ol>
+              <li>Teach users about blockchain: how it works, what it does, and why we should care.</li>
+              <li>Form an online community dedicated to achieving Goal #1.</li>
+            </ol>
             <p>
-              This site aims to achieve two goals:<br/>
-              <br/>
-              <ol>
-                <li>Teach users about blockchain: how it works, what it does, and why we should care.</li>
-                <li>Form an online community dedicated to achieving Goal #1.</li>
-              </ol>
-              <br/>
               In the spirit of the first goal, I will be working to provide amazing content that triggers
               lightbulb moments for all of you. However, I do have something to ask in return: <Link to='/login'>create an account</Link>,
               comment on <a href='#Lessons'>lessons</a>, and let your voice be heard. The second goal ultimately plays a much more significant
