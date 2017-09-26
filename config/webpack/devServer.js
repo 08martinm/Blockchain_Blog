@@ -8,7 +8,7 @@ exports.devServer =
     stats: 'normal',
     hot: env,
     overlay: {
-      errors: true,
-      warnings: true,
+      errors: env,
+      warnings: env,
     },
   };
