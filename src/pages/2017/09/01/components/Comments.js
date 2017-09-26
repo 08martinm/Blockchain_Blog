@@ -33,9 +33,9 @@ export default Comments;
 
 const CommentsContainer = props => (
   <div>
-    {props.posts.length > 0 && props.posts.map(post => {
+    {props.posts.length > 0 && props.posts.map((post, key) => {
       return (
-        <div key={post._id}>
+        <div key={key}>
           <li>
             <div className={styles['comment-main-level']}>
               <Comment post={post} submitPost={props.submitPost} level={props.level} handleAuth={props.handleAuth} addPost={props.addPost} cancelPost={props.cancelPost} deletePost={props.deletePost} editPost={props.editPost} editLikes={props.editLikes}/>
