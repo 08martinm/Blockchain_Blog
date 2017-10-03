@@ -37,11 +37,12 @@ const Explanation = () => {
           tasks using Excel VBA. After two years, I joined the Stanford Consulting Group
           in Silicon Valley assessing damages in class-action, securities-fraud cases.
           Here, I completed the CFA exams and earned the charter while continuing to teach myself
-          programming. I implemented an automated multivariate regression analysis, which significantly reduced the time
+          programming. Using those programming skills, I implemented an automated multivariate regression analysis, which significantly reduced the time
           required to complete our analyses and subsequently built a user interface using React, Express, Node, and MongoDB.
-          Outside of work, I worked with a team building an open-source Ethereum-based CraigsList, which served as my first 
-          exposure to blockchain technology. Since then, I have continued to learn about and program on the blockchain.
-          In my spare time, I toil endlessly to create content for ultra-picky and ungrateful users of free, online content.
+          Outside of work, I began working with groups on open-source projects, one of which centered around building an open-source
+          Ethereum-based CraigsList. This project really opened my eyes to the possibilities of the blockchain technology and the need for more
+          resources dedicated to teaching the blockchain&#39;s core concepts. 
+          So, in my spare time, I now toil endlessly to create content for ultra-picky and ungrateful users of free, online content.
           <br /><br />
         </p>
         <div className='alert alert-info'>
