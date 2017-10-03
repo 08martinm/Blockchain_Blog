@@ -37,12 +37,11 @@ const Explanation = () => {
           tasks using Excel VBA. After two years, I joined the Stanford Consulting Group
           in Silicon Valley assessing damages in class-action, securities-fraud cases.
           Here, I completed the CFA exams and earned the charter while continuing to teach myself
-          programming. On a work-sponsored sabbatical, I attended a three-month software development
-          boot-camp to further improve my coding skills, which happened to be in high-demand.
-          During this bootcamp, I was first exposed to blockchain via working
-          on an open-source Ethereum-based CraigsList. I have now returned to my company and
-          completed automating our multivariate regression analyses. In my spare time, I toil endlessly to create content for
-          ultra-picky and ungrateful users of free, online content.
+          programming. I implemented an automated multivariate regression analysis, which significantly reduced the time
+          required to complete our analyses and subsequently built a user interface using React, Express, Node, and MongoDB.
+          Outside of work, I worked with a team building an open-source Ethereum-based CraigsList, which served as my first 
+          exposure to blockchain technology. Since then, I have continued to learn about and program on the blockchain.
+          In my spare time, I toil endlessly to create content for ultra-picky and ungrateful users of free, online content.
           <br /><br />
         </p>
         <div className='alert alert-info'>
